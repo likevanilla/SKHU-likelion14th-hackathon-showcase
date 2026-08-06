@@ -31,6 +31,41 @@ body {
   min-height: 100vh;
 }
 
+.spa-tab {
+  border-radius: 999px;
+  min-width: 0;
+  padding: 8px 10px;
+  color: var(--lion-black);
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.spa-tab:hover,
+.spa-tab.is-active {
+  background: var(--primary-orange);
+  color: var(--layer-white);
+}
+
+.spa-tab:active {
+  transform: translateY(1px);
+}
+
+@media (min-width: 640px) {
+  .spa-tab {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+.page-panel {
+  animation: page-panel-in 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
 h1,
 h2,
 h3,
@@ -42,7 +77,49 @@ h3,
   font-family: var(--font-en);
 }
 
+.hero-stroke-title {
+  display: grid;
+  gap: 0.1em;
+  width: min(100%, 760px);
+  line-height: 1.02;
+  justify-items: start;
+  text-align: left;
+}
+
+.hero-stroke-line {
+  --stroke-text-height: clamp(48px, 13vw, 96px);
+}
+
+.hero-stroke-line--wide {
+  width: min(100%, 760px);
+}
+
+@media (min-width: 640px) {
+  .hero-stroke-title {
+    width: min(100%, 900px);
+  }
+
+  .hero-stroke-line {
+    --stroke-text-height: clamp(76px, 9vw, 128px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-stroke-title {
+    width: 920px;
+  }
+
+  .hero-stroke-line {
+    --stroke-text-height: 124px;
+  }
+
+  .hero-stroke-line--wide {
+    width: 920px;
+  }
+}
+
 .motion-grid {
+  position: relative;
   background-image:
     linear-gradient(var(--lion-black) 1px, var(--base-grey) 1px),
     linear-gradient(90deg, var(--lion-black) 1px, var(--base-grey) 1px);
@@ -53,24 +130,24 @@ h3,
 .spotlight {
   position: absolute;
   border-radius: 999px;
-  filter: blur(12px);
-  opacity: 0.72;
+  filter: blur(20px);
+  opacity: 0.34;
   animation: float 8s ease-in-out infinite;
 }
 
 .spotlight-one {
-  top: 16%;
-  right: 12%;
-  width: 240px;
-  height: 240px;
+  top: 10%;
+  right: -72px;
+  width: 180px;
+  height: 180px;
   background: var(--primary-orange);
 }
 
 .spotlight-two {
-  bottom: 8%;
-  left: 10%;
-  width: 180px;
-  height: 180px;
+  bottom: 4%;
+  left: -52px;
+  width: 140px;
+  height: 140px;
   background: var(--utility-yellow);
   animation-delay: -3s;
 }
@@ -392,6 +469,18 @@ h3,
   from {
     opacity: 0;
     transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
   }
 
   to {
