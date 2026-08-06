@@ -1,0 +1,624 @@
+@import url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@import "tailwindcss";
+
+:root {
+  --primary-orange: #ff6000;
+  --layer-white: #f9f9f9;
+  --lion-black: #1c1c1c;
+  --base-grey: #f2ede6;
+  --utility-yellow: #ffe066;
+  --mobile-card-enter-duration: 520ms;
+  --mobile-card-exit-duration: 260ms;
+  --font-title-ko: SUIT, Pretendard, ui-sans-serif, system-ui, sans-serif;
+  --font-body-ko: Pretendard, ui-sans-serif, system-ui, sans-serif;
+  --font-en: Gotham, "Montserrat", "Avenir Next", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--base-grey);
+  font-family: var(--font-body-ko);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+.ko-title {
+  font-family: var(--font-title-ko);
+}
+
+:lang(en) {
+  font-family: var(--font-en);
+}
+
+.motion-grid {
+  background-image:
+    linear-gradient(var(--lion-black) 1px, var(--base-grey) 1px),
+    linear-gradient(90deg, var(--lion-black) 1px, var(--base-grey) 1px);
+  background-size: 42px 42px;
+  opacity: 0.08;
+}
+
+.spotlight {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(12px);
+  opacity: 0.72;
+  animation: float 8s ease-in-out infinite;
+}
+
+.spotlight-one {
+  top: 16%;
+  right: 12%;
+  width: 240px;
+  height: 240px;
+  background: var(--primary-orange);
+}
+
+.spotlight-two {
+  bottom: 8%;
+  left: 10%;
+  width: 180px;
+  height: 180px;
+  background: var(--utility-yellow);
+  animation-delay: -3s;
+}
+
+.fade-up {
+  animation: fade-up 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.fade-down {
+  animation: fade-down 650ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.fade-in {
+  animation: fade-in 800ms ease both;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+  animation: card-rise 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.tilt-card:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(-3deg);
+}
+
+.pulse-badge {
+  animation: pulse-badge 1.8s ease-in-out infinite;
+}
+
+.event-step {
+  animation: step-pop 550ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.fan-draw-stage {
+  position: relative;
+  min-height: 360px;
+  overflow: visible;
+  perspective: 1200px;
+}
+
+.mobile-card-deck {
+  position: relative;
+}
+
+.mobile-card-stage {
+  position: relative;
+  min-height: 370px;
+  display: grid;
+  place-items: center;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+.mobile-card-stage::before,
+.mobile-card-stage::after {
+  content: "";
+  position: absolute;
+  width: min(72vw, 260px);
+  height: min(96vw, 350px);
+  border: 3px solid var(--lion-black);
+  border-radius: 18px;
+  background: var(--base-grey);
+  transform-origin: 50% 110%;
+  transform-style: preserve-3d;
+}
+
+.mobile-card-stage::before {
+  transform: translate3d(10px, 18px, -44px) rotateX(8deg) rotateY(-5deg)
+    rotate(5deg);
+}
+
+.mobile-card-stage::after {
+  background: var(--utility-yellow);
+  transform: translate3d(-10px, 24px, -24px) rotateX(7deg) rotateY(5deg)
+    rotate(-5deg);
+}
+
+.mobile-draw-card {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  width: min(72vw, 260px);
+  height: min(96vw, 350px);
+  flex-direction: column;
+  overflow: hidden;
+  border: 3px solid var(--lion-black);
+  border-radius: 18px;
+  background: var(--layer-white);
+  color: var(--lion-black);
+  padding: 22px;
+  text-align: left;
+  transform: translate3d(0, 0, 36px) rotateX(3deg) rotateY(-2deg) rotate(0deg);
+  transform-style: preserve-3d;
+  transition:
+    transform 460ms cubic-bezier(0.18, 0.9, 0.22, 1.08),
+    background-color 240ms ease,
+    outline 240ms ease;
+  box-shadow: 10px 14px 0 var(--lion-black);
+  will-change: transform;
+}
+
+.mobile-draw-card.is-exiting {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.mobile-draw-card.is-entering {
+  animation-duration: var(--mobile-card-enter-duration);
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.18, 0.9, 0.22, 1.08);
+}
+
+.mobile-draw-card.is-entering.is-next {
+  animation-name: mobile-card-enter-next;
+}
+
+.mobile-draw-card.is-entering.is-prev {
+  animation-name: mobile-card-enter-prev;
+}
+
+.mobile-draw-card.is-exiting.is-next {
+  animation: mobile-card-exit-next var(--mobile-card-exit-duration)
+    cubic-bezier(0.35, 0, 0.6, 1) both;
+}
+
+.mobile-draw-card.is-exiting.is-prev {
+  animation: mobile-card-exit-prev var(--mobile-card-exit-duration)
+    cubic-bezier(0.35, 0, 0.6, 1) both;
+}
+
+.mobile-draw-card::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 2px solid var(--lion-black);
+  border-radius: 12px;
+  pointer-events: none;
+  transform: translateZ(12px);
+}
+
+.mobile-draw-card::before {
+  content: "";
+  position: absolute;
+  inset: auto -9px -11px 14px;
+  height: 18px;
+  border: 3px solid var(--lion-black);
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  background: var(--base-grey);
+  transform: translateZ(-18px) skewX(-18deg);
+  pointer-events: none;
+}
+
+.mobile-draw-card.is-active {
+  transform: translate3d(0, -48px, 74px) rotateX(0deg) rotateY(0deg) scale(1.04);
+  box-shadow: 14px 20px 0 var(--lion-black);
+}
+
+.mobile-nav-button {
+  min-width: 64px;
+  border: 2px solid var(--layer-white);
+  border-radius: 999px;
+  background: var(--lion-black);
+  color: var(--layer-white);
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.mobile-team-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--layer-white);
+  border-radius: 999px;
+  background: var(--lion-black);
+  transition:
+    width 240ms ease,
+    background-color 240ms ease;
+}
+
+.mobile-team-dot.is-selected {
+  width: 28px;
+  background: var(--primary-orange);
+}
+
+.draw-card {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: var(--fan-z);
+  display: flex;
+  width: min(56vw, 190px);
+  height: min(76vw, 270px);
+  flex-direction: column;
+  overflow: hidden;
+  border: 3px solid var(--lion-black);
+  border-radius: 16px;
+  background: var(--layer-white);
+  color: var(--lion-black);
+  padding: 16px;
+  text-align: left;
+  transform: translate3d(calc(-50% + var(--fan-x)), var(--fan-y), 0)
+    rotateX(4deg) rotateY(-4deg) rotate(var(--fan-rotate));
+  transform-origin: 50% 112%;
+  transform-style: preserve-3d;
+  transition:
+    transform 520ms cubic-bezier(0.18, 0.9, 0.22, 1.08),
+    background-color 240ms ease,
+    color 240ms ease,
+    outline 240ms ease,
+    z-index 0ms linear 120ms;
+  animation: card-fade-in 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  cursor: pointer;
+  will-change: transform;
+  box-shadow: 8px 12px 0 var(--lion-black);
+}
+
+.draw-card::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 2px solid var(--lion-black);
+  border-radius: 12px;
+  pointer-events: none;
+  transform: translateZ(12px);
+}
+
+.draw-card::before {
+  content: "";
+  position: absolute;
+  inset: auto -9px -11px 14px;
+  height: 18px;
+  border: 3px solid var(--lion-black);
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
+  background: var(--base-grey);
+  transform: translateZ(-18px) skewX(-18deg);
+  pointer-events: none;
+}
+
+.draw-card:hover,
+.draw-card:focus-visible,
+.draw-card.is-active {
+  z-index: 30;
+  transform: translate3d(
+      calc(-50% + var(--fan-x) + var(--pull-x)),
+      calc(var(--fan-y) + var(--pull-y)),
+      72px
+    )
+    rotateX(0deg) rotateY(0deg) rotate(var(--fan-rotate)) scale(1.06);
+  box-shadow: 14px 20px 0 var(--lion-black);
+  transition:
+    transform 520ms cubic-bezier(0.18, 0.9, 0.22, 1.08),
+    background-color 240ms ease,
+    color 240ms ease,
+    outline 240ms ease,
+    z-index 0ms;
+}
+
+.card-corner {
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  color: var(--primary-orange);
+}
+
+.card-suit {
+  position: relative;
+  z-index: 1;
+  margin-top: 8px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+}
+
+.card-mark {
+  position: absolute;
+  top: 72px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border: 3px solid var(--lion-black);
+  border-radius: 50%;
+  background: var(--primary-orange);
+}
+
+.card-mark::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border-radius: 50%;
+  background: var(--utility-yellow);
+}
+
+.modal-enter {
+  animation: modal-enter 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(18px, -20px, 0) scale(1.08);
+  }
+}
+
+@keyframes card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px) rotateX(8deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+@keyframes pulse-badge {
+  0%,
+  100% {
+    transform: scale(1);
+    outline: 0 solid var(--primary-orange);
+  }
+
+  50% {
+    transform: scale(1.06);
+    outline: 10px solid var(--base-grey);
+  }
+}
+
+@keyframes step-pop {
+  from {
+    opacity: 0;
+    transform: translateX(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes card-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mobile-card-enter-next {
+  from {
+    opacity: 0.96;
+    transform: translate3d(22px, 28px, -32px) rotateX(8deg) rotateY(-6deg)
+      rotate(5deg) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 36px) rotateX(3deg) rotateY(-2deg) rotate(0deg)
+      scale(1);
+  }
+}
+
+@keyframes mobile-card-enter-prev {
+  from {
+    opacity: 0.96;
+    transform: translate3d(-22px, 28px, -32px) rotateX(8deg) rotateY(6deg)
+      rotate(-5deg) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 36px) rotateX(3deg) rotateY(-2deg) rotate(0deg)
+      scale(1);
+  }
+}
+
+@keyframes mobile-card-exit-next {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 36px) rotateX(3deg) rotateY(-2deg) rotate(0deg)
+      scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(-22px, 30px, -32px) rotateX(8deg) rotateY(6deg)
+      rotate(-5deg) scale(0.94);
+  }
+}
+
+@keyframes mobile-card-exit-prev {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 36px) rotateX(3deg) rotateY(-2deg) rotate(0deg)
+      scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(22px, 30px, -32px) rotateX(8deg) rotateY(-6deg)
+      rotate(5deg) scale(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .fan-draw-stage {
+    min-height: 430px;
+  }
+
+  .draw-card {
+    width: 220px;
+    height: 320px;
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .card-corner {
+    font-size: 13px;
+  }
+
+  .card-suit {
+    font-size: 10px;
+  }
+
+  .card-mark {
+    top: 84px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .card-mark::after {
+    inset: 11px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fan-draw-stage {
+    min-height: 500px;
+  }
+
+  .draw-card {
+    width: 250px;
+    height: 350px;
+    border-radius: 18px;
+    padding: 24px;
+  }
+
+  .card-corner {
+    font-size: 14px;
+  }
+
+  .card-suit {
+    font-size: 11px;
+  }
+
+  .card-mark {
+    top: 92px;
+    right: 28px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .card-mark::after {
+    inset: 13px;
+  }
+}
