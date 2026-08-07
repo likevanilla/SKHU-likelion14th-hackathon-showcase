@@ -20,14 +20,15 @@ function TeamsPage() {
                 drawDuration={1.1}
                 fillColor="var(--lion-black)"
                 fillDelay={0.1}
+                fillMode="fade"
                 fontFamily="var(--font-title-ko)"
                 fontSize={72}
                 fontWeight={900}
-                letterSpacing={-1}
+                letterSpacing={0}
                 stagger={0.04}
                 startDelay={0.42}
                 strokeColor="var(--lion-black)"
-                strokeWidth={1.5}
+                strokeWidth={0.9}
                 text="서비스 소개"
               />
             </h1>

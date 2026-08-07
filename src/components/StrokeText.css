@@ -16,6 +16,7 @@
   display: block;
   width: 100%;
   height: var(--stroke-text-height, 160px);
+  overflow: visible;
 }
 
 .stroke-text__stroke,

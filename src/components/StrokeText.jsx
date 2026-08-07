@@ -136,7 +136,7 @@ function StrokeText({
 
     const setStart = () => {
       gsap.killTweensOf(targets)
-      gsap.set(strokes, { strokeDasharray: dash, strokeDashoffset: dash })
+      gsap.set(strokes, { opacity: 1, strokeDasharray: dash, strokeDashoffset: dash })
       gsap.set(fills, { opacity: useWipe ? 1 : 0 })
       if (wipe) gsap.set(wipe, { attr: { width: 0 } })
     }
@@ -183,6 +183,11 @@ function StrokeText({
           fills,
           { opacity: 1, duration: fillDuration, ease: 'power2.out', stagger: staggerConfig },
           drawDuration + fillDelay,
+        )
+        tl.to(
+          strokes,
+          { opacity: 0, duration: 0.22, ease: 'power1.out' },
+          drawDuration + fillDelay + fillDuration * 0.55,
         )
       }
 
@@ -294,13 +299,7 @@ function StrokeText({
           clipPath={effectiveFillMode === 'wipe' && box ? `url(#${wipeId})` : undefined}
           data-fill-layer
           fill={fillColor}
-          opacity={
-            effectiveFillMode === 'wipe' && box
-              ? 1
-              : effectiveFillMode === 'none'
-                ? 0
-                : undefined
-          }
+          opacity={effectiveFillMode === 'wipe' && box ? 1 : 0}
           stroke="none"
           style={fontStyle}
           x="0"

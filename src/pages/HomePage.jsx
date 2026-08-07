@@ -46,24 +46,26 @@ function HomePage() {
             style={{ '--stroke-text-height': 'clamp(48px, 13vw, 124px)' }}
             text="성공회대 부스에서"
           />
-          <StrokeText
-            className="hero-stroke-line"
-            drawDuration={1.2}
-            fillColor="var(--lion-black)"
-            fillDelay={0.14}
-            fontFamily="var(--font-title-ko)"
-            fontSize={96}
-            fontWeight={900}
-            letterSpacing={-1}
-            stagger={0.035}
-            startDelay={0.6}
-            strokeColor="var(--lion-black)"
-            strokeWidth={1.6}
-            style={{ '--stroke-text-height': 'clamp(48px, 13vw, 124px)' }}
-            text="만나요"
-          />
-          <span className="stroke-emoji" aria-hidden="true">
-            🙌
+          <span className="stroke-inline">
+            <StrokeText
+              className="hero-stroke-line hero-stroke-line--short"
+              drawDuration={1.2}
+              fillColor="var(--lion-black)"
+              fillDelay={0.14}
+              fontFamily="var(--font-title-ko)"
+              fontSize={96}
+              fontWeight={900}
+              letterSpacing={-1}
+              stagger={0.035}
+              startDelay={0.6}
+              strokeColor="var(--lion-black)"
+              strokeWidth={1.6}
+              style={{ '--stroke-text-height': 'clamp(48px, 13vw, 124px)' }}
+              text="만나요"
+            />
+            <span className="stroke-emoji" aria-hidden="true">
+              🙌
+            </span>
           </span>
         </h1>
 
