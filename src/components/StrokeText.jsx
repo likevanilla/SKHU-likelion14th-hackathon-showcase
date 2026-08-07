@@ -120,7 +120,11 @@ function StrokeText({
     if (typeof window === 'undefined' || !root || !box) return undefined
 
     const strokes = gsap.utils.toArray(root.querySelectorAll('[data-stroke-char]'))
-    const fills = gsap.utils.toArray(root.querySelectorAll('[data-fill-char]'))
+    const fillLayer = root.querySelector('[data-fill-layer]')
+    const fills =
+      effectiveFillMode === 'fade'
+        ? [fillLayer].filter(Boolean)
+        : gsap.utils.toArray(root.querySelectorAll('[data-fill-char]'))
     const wipe = wipeRectRef.current
     if (!strokes.length) return undefined
 
@@ -288,9 +292,16 @@ function StrokeText({
         <text
           className="stroke-text__fill"
           clipPath={effectiveFillMode === 'wipe' && box ? `url(#${wipeId})` : undefined}
+          data-fill-layer
           fill={fillColor}
+          opacity={
+            effectiveFillMode === 'wipe' && box
+              ? 1
+              : effectiveFillMode === 'none'
+                ? 0
+                : undefined
+          }
           stroke="none"
-          opacity={effectiveFillMode === 'wipe' && box ? 1 : 0}
           style={fontStyle}
           x="0"
           y="0"
