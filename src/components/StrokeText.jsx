@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './StrokeText.css'
@@ -91,7 +91,7 @@ function StrokeText({
     }
   }, [characters, numericFontSize, fontWeight, letterSpacing, strokeWidth])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = rootRef.current
     if (typeof window === 'undefined' || !root || !box) return undefined
 
@@ -233,7 +233,11 @@ function StrokeText({
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={strokeWidth}
-          style={fontStyle}
+          style={{
+            ...fontStyle,
+            strokeDasharray: dash,
+            strokeDashoffset: dash,
+          }}
           x="0"
           y="0"
         >
@@ -249,6 +253,7 @@ function StrokeText({
           clipPath={fillMode === 'wipe' && box ? `url(#${wipeId})` : undefined}
           fill={fillColor}
           stroke="none"
+          opacity={fillMode === 'wipe' && box ? 1 : 0}
           style={fontStyle}
           x="0"
           y="0"
