@@ -52,6 +52,9 @@ function StrokeText({
     if (!node) return undefined
 
     let cancelled = false
+    let frameId = 0
+
+    setBox(null)
 
     const measure = () => {
       if (cancelled || !strokeTextRef.current) return
@@ -81,13 +84,19 @@ function StrokeText({
       )
     }
 
-    measure()
+    const measureOnNextFrame = () => {
+      frameId = window.requestAnimationFrame(measure)
+    }
+
     if (typeof document !== 'undefined' && document.fonts?.ready) {
-      document.fonts.ready.then(measure).catch(() => {})
+      document.fonts.ready.then(measureOnNextFrame).catch(measureOnNextFrame)
+    } else {
+      measureOnNextFrame()
     }
 
     return () => {
       cancelled = true
+      window.cancelAnimationFrame(frameId)
     }
   }, [characters, numericFontSize, fontWeight, letterSpacing, strokeWidth])
 
@@ -203,7 +212,9 @@ function StrokeText({
   return (
     <span
       ref={rootRef}
-      className={`stroke-text ${trigger === 'hover' ? 'stroke-text--hover' : ''} ${className}`.trim()}
+      className={`stroke-text ${!box ? 'stroke-text--measuring' : ''} ${
+        trigger === 'hover' ? 'stroke-text--hover' : ''
+      } ${className}`.trim()}
       style={{
         '--stroke-text-height': `${Math.round(numericFontSize * 1.08)}px`,
         ...style,

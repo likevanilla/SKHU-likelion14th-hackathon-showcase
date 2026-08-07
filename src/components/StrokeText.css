@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+.stroke-text--measuring .stroke-text__svg {
+  visibility: hidden;
+}
+
 .stroke-text__svg {
   display: block;
   width: 100%;
