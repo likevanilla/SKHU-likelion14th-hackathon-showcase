@@ -42,7 +42,7 @@ function HomePage() {
             strokeColor="var(--primary-orange)"
             strokeWidth={1.6}
             style={{ '--stroke-text-height': 'clamp(48px, 13vw, 124px)' }}
-            text="우리 학교 부스에서"
+            text="성공회대 부스에서"
           />
           <StrokeText
             className="hero-stroke-line"
