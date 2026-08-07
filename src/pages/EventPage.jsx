@@ -22,9 +22,10 @@ function EventPage() {
             fontWeight={900}
             letterSpacing={-1}
             stagger={0.04}
+            startDelay={0.42}
             strokeColor="var(--lucky-green)"
             strokeWidth={1.5}
-            text="럭키드로우 🍀"
+            text="럭키드로우"
           />
           <StrokeText
             className="page-stroke-line"
@@ -36,6 +37,7 @@ function EventPage() {
             fontWeight={900}
             letterSpacing={-1}
             stagger={0.04}
+            startDelay={0.48}
             strokeColor="var(--lion-black)"
             strokeWidth={1.5}
             text="이벤트"

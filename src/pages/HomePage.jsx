@@ -13,7 +13,7 @@ function HomePage() {
         >
           Hackathon Booth Event
         </p>
-        <h1 className="hero-stroke-title fade-up delay-100 mt-5 font-black">
+        <h1 className="hero-stroke-title mt-5 font-black">
           <StrokeText
             className="hero-stroke-line"
             drawDuration={1.2}
@@ -24,6 +24,7 @@ function HomePage() {
             fontWeight={900}
             letterSpacing={-1}
             stagger={0.035}
+            startDelay={0.48}
             strokeColor="var(--lion-black)"
             strokeWidth={1.6}
             style={{ '--stroke-text-height': 'clamp(48px, 13vw, 124px)' }}
@@ -39,6 +40,7 @@ function HomePage() {
             fontWeight={900}
             letterSpacing={-1}
             stagger={0.035}
+            startDelay={0.54}
             strokeColor="var(--primary-orange)"
             strokeWidth={1.6}
             style={{ '--stroke-text-height': 'clamp(48px, 13vw, 124px)' }}
@@ -54,10 +56,11 @@ function HomePage() {
             fontWeight={900}
             letterSpacing={-1}
             stagger={0.035}
+            startDelay={0.6}
             strokeColor="var(--lion-black)"
             strokeWidth={1.6}
             style={{ '--stroke-text-height': 'clamp(48px, 13vw, 124px)' }}
-            text="만나요 🙌"
+            text="만나요"
           />
         </h1>
 

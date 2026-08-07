@@ -23,6 +23,7 @@ function StrokeText({
   letterSpacing = 0,
   fontFamily = 'inherit',
   reverse = false,
+  startDelay = 0,
   className = '',
   style = {},
 }) {
@@ -30,12 +31,15 @@ function StrokeText({
   const strokeTextRef = useRef(null)
   const wipeRectRef = useRef(null)
   const [box, setBox] = useState(null)
+  const [useMobileFill, setUseMobileFill] = useState(false)
 
   const rawId = useId()
   const wipeId = `stroke-text-wipe-${rawId.replace(/[^a-zA-Z0-9_-]/g, '')}`
   const characters = useMemo(() => Array.from(String(text ?? '')), [text])
   const numericFontSize = Number.parseFloat(fontSize) || 128
   const dash = Math.max(numericFontSize * 7, 200)
+  const effectiveFillMode =
+    useMobileFill && fillMode === 'wipe' ? 'fade' : fillMode
 
   const fontStyle = useMemo(
     () => ({
@@ -101,6 +105,17 @@ function StrokeText({
   }, [characters, numericFontSize, fontWeight, letterSpacing, strokeWidth])
 
   useLayoutEffect(() => {
+    if (typeof window === 'undefined') return undefined
+
+    const query = window.matchMedia('(max-width: 640px)')
+    const update = () => setUseMobileFill(query.matches)
+    update()
+    query.addEventListener('change', update)
+
+    return () => query.removeEventListener('change', update)
+  }, [])
+
+  useLayoutEffect(() => {
     const root = rootRef.current
     if (typeof window === 'undefined' || !root || !box) return undefined
 
@@ -109,8 +124,8 @@ function StrokeText({
     const wipe = wipeRectRef.current
     if (!strokes.length) return undefined
 
-    const fillEnabled = fillMode !== 'none'
-    const useWipe = fillEnabled && fillMode === 'wipe'
+    const fillEnabled = effectiveFillMode !== 'none'
+    const useWipe = fillEnabled && effectiveFillMode === 'wipe'
     const fillDuration = Math.max(0.4, drawDuration * 0.5)
     const staggerConfig = reverse ? { each: stagger, from: 'end' } : stagger
     const targets = [...strokes, ...fills, wipe].filter(Boolean)
@@ -172,14 +187,24 @@ function StrokeText({
 
     let timeline = null
     let scrollTrigger = null
+    let delayedPlay = null
     let removeHover = null
+
+    const playTimeline = () => {
+      delayedPlay?.kill()
+      if (startDelay > 0) {
+        delayedPlay = gsap.delayedCall(startDelay, () => timeline?.play(0))
+      } else {
+        timeline?.play(0)
+      }
+    }
 
     if (trigger === 'hover') {
       setEnd()
       const play = () => {
         timeline?.kill()
         timeline = build()
-        timeline.play(0)
+        playTimeline()
       }
       root.addEventListener('pointerenter', play)
       removeHover = () => root.removeEventListener('pointerenter', play)
@@ -190,20 +215,21 @@ function StrokeText({
           trigger: root,
           start: 'top 82%',
           once: true,
-          onEnter: () => timeline?.play(0),
+          onEnter: playTimeline,
         })
       } else {
-        timeline.play(0)
+        playTimeline()
       }
     }
 
     return () => {
       removeHover?.()
       scrollTrigger?.kill()
+      delayedPlay?.kill()
       timeline?.kill()
       gsap.killTweensOf(targets)
     }
-  }, [box, dash, drawDuration, fillDelay, stagger, ease, trigger, fillMode, reverse])
+  }, [box, dash, drawDuration, fillDelay, stagger, ease, trigger, effectiveFillMode, reverse, startDelay])
 
   const viewBox = box
     ? `${box.x} ${box.y} ${box.width} ${box.height}`
@@ -228,7 +254,7 @@ function StrokeText({
         preserveAspectRatio="xMinYMid meet"
         viewBox={viewBox}
       >
-        {fillMode === 'wipe' && box && (
+        {effectiveFillMode === 'wipe' && box && (
           <defs>
             <clipPath clipPathUnits="userSpaceOnUse" id={wipeId}>
               <rect ref={wipeRectRef} height={box.height} width="0" x={box.x} y={box.y} />
@@ -261,10 +287,10 @@ function StrokeText({
 
         <text
           className="stroke-text__fill"
-          clipPath={fillMode === 'wipe' && box ? `url(#${wipeId})` : undefined}
+          clipPath={effectiveFillMode === 'wipe' && box ? `url(#${wipeId})` : undefined}
           fill={fillColor}
           stroke="none"
-          opacity={fillMode === 'wipe' && box ? 1 : 0}
+          opacity={effectiveFillMode === 'wipe' && box ? 1 : 0}
           style={fontStyle}
           x="0"
           y="0"

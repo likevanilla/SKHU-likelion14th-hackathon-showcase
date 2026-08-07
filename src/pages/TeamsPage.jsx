@@ -25,6 +25,7 @@ function TeamsPage() {
                 fontWeight={900}
                 letterSpacing={-1}
                 stagger={0.04}
+                startDelay={0.42}
                 strokeColor="var(--lion-black)"
                 strokeWidth={1.5}
                 text="서비스 소개"
