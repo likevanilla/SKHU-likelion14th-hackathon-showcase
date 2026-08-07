@@ -27,6 +27,9 @@ function EventPage() {
             strokeWidth={1.5}
             text="럭키드로우"
           />
+          <span className="stroke-emoji stroke-emoji--event" aria-hidden="true">
+            🍀
+          </span>
           <StrokeText
             className="page-stroke-line"
             drawDuration={1.1}

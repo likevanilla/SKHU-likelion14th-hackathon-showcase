@@ -62,6 +62,9 @@ function HomePage() {
             style={{ '--stroke-text-height': 'clamp(48px, 13vw, 124px)' }}
             text="만나요"
           />
+          <span className="stroke-emoji" aria-hidden="true">
+            🙌
+          </span>
         </h1>
 
         <div className="fade-up delay-300 mt-9 flex flex-wrap gap-3">
