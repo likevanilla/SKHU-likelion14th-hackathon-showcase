@@ -48,7 +48,7 @@ export const eventCards = [
   {
     title: '참여 혜택',
     description:
-      '피드백을 작성해주신 분께 럭키드로우 기회를 1회 제공합니다.',
+      '피드백을 작성해주신 분께 럭키드로우 기회를 1회 제공합니다. 피드백을 남기지 않아도 시연에 참여해주신 분께 원형 스티커를 나눠드립니다.',
   },
   {
     title: '현장 안내',
@@ -81,11 +81,6 @@ export const luckyDrawPrizes = [
   {
     name: '스티커',
     imageAlt: '스티커 상품 이미지',
-    imageSrc: null,
-  },
-  {
-    name: '키캡 키링',
-    imageAlt: '키캡 키링 상품 이미지',
     imageSrc: null,
   },
 ]

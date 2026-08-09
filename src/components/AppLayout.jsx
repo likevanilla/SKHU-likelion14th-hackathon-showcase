@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import likelionSkhuLogo from '../assets/likelionskhu.png'
+import likelionSkhuLogo from '../assets/logo.svg'
 import { navItems } from '../data/siteData'
 
 function AppLayout() {
