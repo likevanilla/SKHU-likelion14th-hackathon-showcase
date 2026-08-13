@@ -8,6 +8,8 @@ function EventPage() {
   useEffect(() => {
     if (!selectedPrize) return undefined
 
+    document.body.classList.add('is-prize-modal-open')
+
     const closeOnEscape = (event) => {
       if (event.key === 'Escape') {
         setSelectedPrize(null)
@@ -15,12 +17,17 @@ function EventPage() {
     }
 
     window.addEventListener('keydown', closeOnEscape)
-    return () => window.removeEventListener('keydown', closeOnEscape)
+    return () => {
+      document.body.classList.remove('is-prize-modal-open')
+      window.removeEventListener('keydown', closeOnEscape)
+    }
   }, [selectedPrize])
 
   return (
     <>
-      <section className="event-page-layout page-panel grid min-h-[calc(100vh-88px)] content-center gap-8 py-12 sm:py-16 lg:grid-cols-[0.78fr_1.22fr]">
+      <section
+        className={`event-page-layout page-panel grid min-h-[calc(100vh-88px)] content-center gap-8 py-12 sm:py-16 lg:grid-cols-[0.78fr_1.22fr] ${selectedPrize ? 'is-prize-modal-open' : ''}`}
+      >
         <div>
           <p
             className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--primary-orange)]"
