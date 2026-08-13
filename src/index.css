@@ -171,6 +171,34 @@ h3,
   .hero-stroke-line--wide {
     width: 920px;
   }
+
+  .home-page-layout {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 34px;
+    padding-block: 48px;
+  }
+
+  .home-hero-copy {
+    width: min(100%, 920px);
+    max-width: 920px;
+  }
+
+  .home-page-layout .hero-stroke-title {
+    width: min(100%, 920px);
+  }
+
+  .home-page-layout .hero-stroke-line--wide {
+    width: min(100%, 920px);
+  }
+
+  .home-page-layout .event-ticket {
+    width: min(100%, 620px);
+  }
+
+  .home-schedule-wrap {
+    grid-column: 1;
+  }
 }
 
 .motion-grid {
@@ -468,8 +496,115 @@ h3,
 }
 
 @media (min-width: 1024px) {
+  .event-page-layout {
+    gap: 28px;
+    grid-template-columns: minmax(318px, 0.74fr) minmax(0, 1.26fr);
+  }
+
+  .event-page-layout .page-stroke-title--event {
+    width: min(100%, 390px);
+  }
+
+  .event-page-layout .page-stroke-line {
+    --stroke-text-height: 80px;
+  }
+
+  .event-page-layout .page-stroke-line--lucky {
+    width: min(100%, 330px);
+  }
+
+  .event-page-layout .stroke-emoji--event {
+    font-size: 58px;
+  }
+
+  .event-page-layout .event-guide-item {
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .event-prize-panel {
+    padding: 18px;
+  }
+
+  .event-prize-grid {
+    gap: 10px;
+  }
+
+  .event-prize-grid .prize-card {
+    padding: 9px;
+  }
+
+  .event-prize-grid .prize-name {
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
   .prize-modal-backdrop {
     padding: 32px;
+  }
+
+  .prize-modal-panel {
+    width: min(70vw, 760px);
+    max-height: 84vh;
+    padding: 16px;
+  }
+
+  .prize-modal-image {
+    min-height: min(56vh, 500px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-page-layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    align-items: center;
+    gap: 40px;
+    padding-block: 64px;
+  }
+
+  .home-hero-copy {
+    max-width: 620px;
+  }
+
+  .home-page-layout .hero-stroke-title {
+    width: min(100%, 620px);
+  }
+
+  .home-page-layout .hero-stroke-line {
+    --stroke-text-height: clamp(76px, 7vw, 104px) !important;
+  }
+
+  .home-page-layout .hero-stroke-line--wide {
+    width: min(100%, 620px);
+  }
+
+  .home-page-layout .event-ticket {
+    width: 100%;
+  }
+
+  .home-schedule-wrap {
+    grid-column: 1 / -1;
+  }
+
+  .event-page-layout {
+    gap: 32px;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .event-page-layout .page-stroke-title--event {
+    width: min(100%, 520px);
+  }
+
+  .event-page-layout .page-stroke-line {
+    --stroke-text-height: clamp(72px, 7vw, 96px);
+  }
+
+  .event-page-layout .page-stroke-line--lucky {
+    width: clamp(218px, 60vw, 390px);
+  }
+
+  .event-page-layout .stroke-emoji--event {
+    font-size: clamp(36px, 10vw, 72px);
   }
 
   .prize-modal-panel {
@@ -480,6 +615,24 @@ h3,
 
   .prize-modal-image {
     min-height: min(66vh, 620px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .home-hero-copy {
+    max-width: 760px;
+  }
+
+  .home-page-layout .hero-stroke-title {
+    width: min(100%, 760px);
+  }
+
+  .home-page-layout .hero-stroke-line {
+    --stroke-text-height: clamp(86px, 7vw, 124px) !important;
+  }
+
+  .home-page-layout .hero-stroke-line--wide {
+    width: min(100%, 760px);
   }
 }
 

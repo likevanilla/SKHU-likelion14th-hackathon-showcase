@@ -5,8 +5,8 @@ import StrokeText from '../components/StrokeText'
 
 function HomePage() {
   return (
-    <section className="page-panel grid min-h-[calc(100vh-88px)] items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr]">
-      <div className="max-w-3xl">
+    <section className="home-page-layout page-panel grid min-h-[calc(100vh-88px)] items-center gap-10 py-12 sm:py-16">
+      <div className="home-hero-copy max-w-3xl">
         <p
           className="fade-up text-sm font-black uppercase tracking-[0.2em] text-[color:var(--primary-orange)]"
           lang="en"
@@ -87,7 +87,7 @@ function HomePage() {
 
       <EventTicket />
 
-      <div className="lg:col-span-2">
+      <div className="home-schedule-wrap">
         <ExhibitionSchedule />
       </div>
     </section>

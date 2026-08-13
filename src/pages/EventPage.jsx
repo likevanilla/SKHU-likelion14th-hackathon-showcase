@@ -20,7 +20,7 @@ function EventPage() {
 
   return (
     <>
-      <section className="page-panel grid min-h-[calc(100vh-88px)] content-center gap-8 py-12 sm:py-16 lg:grid-cols-[0.8fr_1.2fr]">
+      <section className="event-page-layout page-panel grid min-h-[calc(100vh-88px)] content-center gap-8 py-12 sm:py-16 lg:grid-cols-[0.78fr_1.22fr]">
         <div>
           <p
             className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--primary-orange)]"
@@ -83,7 +83,7 @@ function EventPage() {
             ))}
           </section>
 
-          <section className="rounded-lg border-2 border-[var(--lion-black)] bg-[var(--lion-black)] p-5 text-[color:var(--layer-white)]">
+          <section className="event-prize-panel rounded-lg border-2 border-[var(--lion-black)] bg-[var(--lion-black)] p-5 text-[color:var(--layer-white)]">
             <p
               className="text-xs font-black uppercase tracking-[0.18em] text-[color:var(--utility-yellow)]"
               lang="en"
@@ -91,7 +91,7 @@ function EventPage() {
               Lucky Draw Prizes
             </p>
             <h2 className="mt-2 text-2xl font-black">상품 안내</h2>
-            <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div className="event-prize-grid mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
               {luckyDrawPrizes.map((prize) => (
                 <button
                   aria-label={`${prize.name} 상품 크게 보기`}
