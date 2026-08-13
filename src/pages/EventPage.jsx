@@ -8,7 +8,10 @@ function EventPage() {
   useEffect(() => {
     if (!selectedPrize) return undefined
 
+    const previousBodyOverflow = document.body.style.overflow
+
     document.body.classList.add('is-prize-modal-open')
+    document.body.style.overflow = 'hidden'
 
     const closeOnEscape = (event) => {
       if (event.key === 'Escape') {
@@ -19,6 +22,7 @@ function EventPage() {
     window.addEventListener('keydown', closeOnEscape)
     return () => {
       document.body.classList.remove('is-prize-modal-open')
+      document.body.style.overflow = previousBodyOverflow
       window.removeEventListener('keydown', closeOnEscape)
     }
   }, [selectedPrize])
@@ -53,7 +57,7 @@ function EventPage() {
                 strokeWidth={0.9}
                 text="럭키드로우"
               />
-              <span className="stroke-emoji stroke-emoji--event" aria-hidden="true">
+              <span className="stroke-emoji clover-emoji" aria-hidden="true">
                 🍀
               </span>
             </span>
@@ -112,6 +116,8 @@ function EventPage() {
                       <img
                         alt={prize.imageAlt}
                         className="h-full w-full object-cover"
+                        decoding="async"
+                        loading="lazy"
                         src={prize.imageSrc}
                       />
                     ) : (
@@ -153,6 +159,7 @@ function EventPage() {
                 <img
                   alt={selectedPrize.imageAlt}
                   className="h-full w-full object-contain"
+                  decoding="async"
                   src={selectedPrize.imageSrc}
                 />
               ) : (

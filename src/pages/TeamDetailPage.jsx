@@ -51,6 +51,8 @@ function TeamDetailPage() {
               <img
                 alt={selectedTeam.logoAlt}
                 className="max-h-20 max-w-36 object-contain"
+                decoding="async"
+                loading="lazy"
                 src={selectedTeam.logoSrc ?? likelionSkhuLogo}
               />
             </div>
@@ -65,6 +67,8 @@ function TeamDetailPage() {
             <img
               alt={selectedTeam.imageAlt}
               className="h-full w-full object-cover"
+              decoding="async"
+              loading="lazy"
               src={selectedTeam.imageSrc}
             />
           ) : (
@@ -73,6 +77,8 @@ function TeamDetailPage() {
                 alt=""
                 aria-hidden="true"
                 className="h-16 w-auto object-contain opacity-90 sm:h-20"
+                decoding="async"
+                loading="lazy"
                 src={likelionSkhuLogo}
               />
               <div>
