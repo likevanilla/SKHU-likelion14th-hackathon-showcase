@@ -335,20 +335,26 @@ h3,
 }
 
 .prize-card {
+  width: 100%;
   border: 2px solid var(--lion-black);
   border-radius: 8px;
   background: var(--layer-white);
   padding: 10px;
   color: var(--lion-black);
   text-align: center;
+  cursor: pointer;
   transition:
     transform 240ms ease,
-    background-color 240ms ease;
+    background-color 240ms ease,
+    box-shadow 240ms ease;
 }
 
-.prize-card:hover {
+.prize-card:hover,
+.prize-card:focus-visible {
   transform: translateY(-4px);
   background: var(--utility-yellow);
+  box-shadow: 4px 5px 0 var(--layer-white);
+  outline: none;
 }
 
 .prize-image-frame {
@@ -377,6 +383,104 @@ h3,
   margin-top: 10px;
   font-size: 14px;
   font-weight: 900;
+}
+
+.prize-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  place-items: center;
+  padding: 20px;
+  background: rgba(249, 249, 249, 0.01);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: modal-backdrop-in 220ms ease both;
+}
+
+.prize-modal-panel {
+  position: relative;
+  width: min(100%, 760px);
+  max-height: min(86vh, 760px);
+  overflow: auto;
+  border: 3px solid var(--lion-black);
+  border-radius: 8px;
+  background: var(--layer-white);
+  padding: 14px;
+  color: var(--lion-black);
+  box-shadow:
+    0 0 0 2px var(--layer-white),
+    10px 12px 0 var(--lion-black);
+}
+
+.prize-modal-close {
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  border: 2px solid var(--lion-black);
+  border-radius: 999px;
+  background: var(--lion-black);
+  color: var(--layer-white);
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 900;
+  transition:
+    transform 200ms ease,
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.prize-modal-close:hover,
+.prize-modal-close:focus-visible {
+  transform: translateY(-2px);
+  background: var(--utility-yellow);
+  color: var(--lion-black);
+  outline: none;
+}
+
+.prize-modal-image {
+  display: grid;
+  min-height: clamp(300px, 58vw, 560px);
+  margin-top: 14px;
+  place-items: center;
+  overflow: hidden;
+  border: 3px solid var(--lion-black);
+  border-radius: 8px;
+  background: var(--base-grey);
+}
+
+.prize-modal-placeholder {
+  display: grid;
+  width: 100%;
+  min-height: inherit;
+  place-items: center;
+  align-content: center;
+  padding: 28px;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(47, 158, 68, 0.18) 25%, transparent 25%) 0 0 /
+      44px 44px,
+    linear-gradient(315deg, rgba(255, 224, 102, 0.42) 25%, transparent 25%) 0 0 /
+      44px 44px,
+    var(--base-grey);
+}
+
+@media (min-width: 1024px) {
+  .prize-modal-backdrop {
+    padding: 32px;
+  }
+
+  .prize-modal-panel {
+    width: min(72vw, 860px);
+    max-height: 88vh;
+    padding: 18px;
+  }
+
+  .prize-modal-image {
+    min-height: min(66vh, 620px);
+  }
 }
 
 .service-detail-shell {
@@ -844,6 +948,16 @@ h3,
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
