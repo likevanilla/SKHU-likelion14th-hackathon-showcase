@@ -379,6 +379,85 @@ h3,
   font-weight: 900;
 }
 
+.service-detail-shell {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+}
+
+.service-detail-hero {
+  display: grid;
+  gap: 28px;
+  align-items: end;
+  border-block: 3px solid var(--lion-black);
+  padding: clamp(30px, 6vw, 72px) 0;
+}
+
+.service-detail-copy {
+  min-width: 0;
+}
+
+.service-logo-lockup {
+  display: grid;
+  width: min(100%, 260px);
+  gap: 10px;
+  align-content: start;
+}
+
+.service-logo-frame {
+  display: grid;
+  min-height: 150px;
+  place-items: center;
+  border: 3px solid var(--lion-black);
+  border-radius: 8px;
+  background: var(--layer-white);
+  box-shadow: 5px 6px 0 var(--lion-black);
+}
+
+.service-image-band {
+  min-height: clamp(280px, 48vw, 520px);
+  overflow: hidden;
+  border: 3px solid var(--lion-black);
+  border-radius: 8px;
+  background: var(--layer-white);
+  box-shadow: 6px 7px 0 var(--lion-black);
+}
+
+.service-image-placeholder {
+  display: grid;
+  min-height: inherit;
+  place-items: center;
+  gap: 22px;
+  padding: 28px;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(255, 96, 0, 0.16) 25%, transparent 25%) 0 0 /
+      42px 42px,
+    linear-gradient(315deg, rgba(255, 224, 102, 0.38) 25%, transparent 25%) 0 0 /
+      42px 42px,
+    var(--base-grey);
+}
+
+.service-content-flow {
+  display: grid;
+  border-top: 3px solid var(--lion-black);
+}
+
+.service-content-section {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 18px;
+  border-bottom: 3px solid var(--lion-black);
+  padding: 28px 0;
+}
+
+.service-section-order {
+  color: var(--primary-orange);
+  font-family: var(--font-en);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
 .fan-draw-stage {
   position: relative;
   min-height: 360px;
@@ -846,6 +925,10 @@ h3,
 }
 
 @media (min-width: 640px) {
+  .service-detail-hero {
+    grid-template-columns: minmax(0, 1fr) 260px;
+  }
+
   .schedule-panel {
     padding: 22px;
   }
@@ -892,6 +975,13 @@ h3,
 
   .card-mark::after {
     inset: 11px;
+  }
+}
+
+@media (max-width: 520px) {
+  .service-content-section {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
 

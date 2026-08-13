@@ -31,9 +31,6 @@ function ExhibitionSchedule() {
           >
             <span className="schedule-order">0{index + 1}</span>
             <div className="min-w-0">
-              <p className="text-xs font-black text-[color:var(--primary-orange)]">
-                {slot.label}
-              </p>
               <h3 className="mt-1 truncate text-xl font-black" lang="en">
                 {slot.team?.name}
               </h3>

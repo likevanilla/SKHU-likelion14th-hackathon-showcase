@@ -37,9 +37,9 @@ function EventTicket() {
           <p className="text-sm font-bold text-[color:var(--utility-yellow)]">
             피드백 작성자 대상
           </p>
-          <p className="mt-2 text-2xl font-black">럭키드로우 1회 제공</p>
+          <p className="mt-2 text-2xl font-black">럭키드로우 기회 1회 제공</p>
           <p className="mt-2 text-sm font-bold leading-6">
-            피드백 없이 시연만 참여해도 원형 스티커를 나눠드립니다.
+            피드백 없이 시연만 참여해도 원형 스티커를 나눠드립니다!
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             {luckyDrawPrizes.map((prize) => (
