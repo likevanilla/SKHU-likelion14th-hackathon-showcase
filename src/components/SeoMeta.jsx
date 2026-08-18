@@ -7,7 +7,7 @@ const defaultTitle = '성공회대 멋쟁이사자처럼 14기 해커톤 쇼케�
 const defaultDescription =
   '성공회대 멋쟁이사자처럼 14기 해커톤 쇼케이스. 참가팀 서비스 소개, 부스 이벤트, 전시 일정을 한곳에서 확인하세요.'
 const defaultImage = '/favicon/android-chrome-512x512.png'
-const siteUrl = 'https://www.14th-hackathon-shku.store'
+const siteUrl = 'https://www.14th-hackathon-skhu.store'
 
 const routeMeta = {
   '/': {
