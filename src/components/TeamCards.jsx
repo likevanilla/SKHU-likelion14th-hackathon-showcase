@@ -2,6 +2,23 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { fanCards, teams } from '../data/siteData'
 
+function CardMark({ team }) {
+  if (team.logoSrc) {
+    return (
+      <span className="card-mark card-logo-mark">
+        <img
+          alt={team.logoAlt}
+          decoding="async"
+          loading="lazy"
+          src={team.logoSrc}
+        />
+      </span>
+    )
+  }
+
+  return <span className="card-mark" />
+}
+
 function TeamCards() {
   const navigate = useNavigate()
   const [activeCard, setActiveCard] = useState(null)
@@ -47,7 +64,7 @@ function TeamCards() {
             >
               <span className="card-corner">0{outgoingMobileIndex + 1}</span>
               <span className="card-suit" lang="en">LIKELION</span>
-              <span className="card-mark" />
+              <CardMark team={teams[outgoingMobileIndex]} />
               <span className="mt-auto block">
                 <span className="block text-3xl font-black" lang="en">
                   {teams[outgoingMobileIndex].name}
@@ -69,7 +86,7 @@ function TeamCards() {
           >
             <span className="card-corner">0{mobileTeamIndex + 1}</span>
             <span className="card-suit" lang="en">LIKELION</span>
-            <span className="card-mark" />
+            <CardMark team={mobileTeam} />
             <span className="mt-auto block">
               <span className="block text-3xl font-black" lang="en">
                 {mobileTeam.name}
@@ -150,7 +167,7 @@ function TeamCards() {
             >
               <span className="card-corner">0{index + 1}</span>
               <span className="card-suit" lang="en">LIKELION</span>
-              <span className="card-mark" />
+              <CardMark team={team} />
               <span className="mt-auto block">
                 <span className="block text-2xl font-black sm:text-3xl" lang="en">
                   {team.name}

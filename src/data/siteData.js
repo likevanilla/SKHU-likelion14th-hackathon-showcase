@@ -1,3 +1,10 @@
+import team5Logo from '../assets/team5/team5_logo.png'
+import team5Thumbnail from '../assets/team5/team5_thumbnail.png'
+import team5Thumbnail2 from '../assets/team5/team5_thumbnail2.png'
+import team5Thumbnail3 from '../assets/team5/team5_thumbnail3.png'
+import team5Thumbnail4 from '../assets/team5/team5_thumbnail4.png'
+import team5Thumbnail5 from '../assets/team5/team5_thumbnail5.png'
+
 export const navItems = [
   { to: '/', label: '소개', end: true },
   { to: '/event', label: '이벤트' },
@@ -103,25 +110,32 @@ export const teams = [
   },
   {
     id: 'team-5',
-    name: 'Team 5',
-    tagline: '서비스 소개 준비 중',
-    description: '서비스 링크와 발표 자료를 함께 보여줄 수 있습니다.',
-    logoSrc: null,
-    logoAlt: 'Team 5 서비스 로고',
-    imageSrc: null,
-    imageAlt: 'Team 5 서비스 대표 이미지',
+    name: '껐다켜봐',
+    tagline: '성주 탐정사무소',
+    description: '1976년 MCM 뮌헨 아틀리에의 수습 디자이너가 되어, AI 증언과 오프라인 QR 단서를 조합해 사라진 시안을 복원하는 온, 오프라인 추리 웹게임',
+    logoSrc: team5Logo,
+    logoAlt: '껐다켜봐 서비스 로고',
+    imageSrc: team5Thumbnail,
+    imageAlt: '껐다켜봐 서비스 대표 이미지',
+    imageGallery: [
+      { src: team5Thumbnail, alt: '껐다켜봐 서비스 대표 이미지 1' },
+      { src: team5Thumbnail2, alt: '껐다켜봐 서비스 대표 이미지 2' },
+      { src: team5Thumbnail3, alt: '껐다켜봐 서비스 대표 이미지 3' },
+      { src: team5Thumbnail4, alt: '껐다켜봐 서비스 대표 이미지 4' },
+      { src: team5Thumbnail5, alt: '껐다켜봐 서비스 대표 이미지 5' },
+    ],
     detailSections: [
       {
         title: '문제 정의',
-        body: '서비스가 해결하려는 문제와 사용자 니즈를 충분히 설명할 수 있습니다.',
+        body: ' MCM은 1976년 뮌헨에서 시작해 여행과 이동성, 비세토스 패턴, 기능 중심의 디자인 철학을 발전시켜 왔다. 하지만 이러한 헤리티지는 주로 전시 설명처럼 수동적인 정보로 전달돼 젊은 고객이 흥미를 느끼고 기억하기 어렵다. 그 결과 젊은 고객은 브랜드 역사를 어렵게 느끼고, 가방의 외형은 보지만 패턴·스트랩·수납 구조에 담긴 설계 의도까지 이해하지 못하며, 오프라인 방문 역시 제품 감상에 그쳐 개인화된 경험이 남지 않는다. ‘성주 탐정사무소’는 실제 역사와 제품 철학을 고객이 직접 탐색하고 기억할 수 있는 참여형 브랜드 경험이 필요하다는 생각에서 제작되었다.',
       },
       {
         title: '핵심 기능',
-        body: '대표 이미지, 로고, 긴 설명을 함께 배치해 서비스의 흐름을 한 화면에서 이어서 볼 수 있습니다.',
+        body: ' 사용자는 MCM의 수습 디자이너가 되어 여행·핸즈프리·데일리 중 가방 스타일을 선택하고 실제 MCM 제품을 레퍼런스로 받는다. 비세토스 패턴과 외관을 복원하는 SIGNATURE, 스트랩·손잡이·수납 구조를 복원하는 FUNCTION 사건을 진행한다. 사건마다 용의자 2명과 대화하며, 한 사람당 최대 3번 질문한다. AI는 정해진 사실과 인물 성격을 유지하며 유동적으로 답변한다. 대화 후 오프라인 공간의 QR을 스캔해 반납 기록, 촬영 사진, 출입·반입 기록 등의 현장 단서를 획득한다. 사용자는 AI 증언과 QR 증거를 비교해 용의자와 사건의 결론을 선택한다. 두 사건을 해결하면 완성된 제품과 구매 링크가 공개되며, 결과 보상으로 1인 1개의 디지털 Designer Pass를 발급한다.',
       },
       {
         title: '데모 링크',
-        body: '배포 링크, QR 코드, 발표 자료 등의 정보를 연결할 수 있습니다.',
+        body: 'https://seongju-detective.vercel.app/',
       },
     ],
   },

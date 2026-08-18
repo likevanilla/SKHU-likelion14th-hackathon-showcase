@@ -2,6 +2,29 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import likelionSkhuLogo from '../assets/logo.svg'
 import { detailLabels, teams } from '../data/siteData'
 
+const urlPattern = /^https?:\/\/\S+$/
+
+function DetailSectionBody({ section }) {
+  if (urlPattern.test(section.body)) {
+    return (
+      <a
+        className="service-detail-link mt-4"
+        href={section.body}
+        rel="noreferrer"
+        target="_blank"
+      >
+        {section.body}
+      </a>
+    )
+  }
+
+  return (
+    <p className="mt-4 whitespace-pre-line text-base font-medium leading-8 sm:text-lg sm:leading-9">
+      {section.body}
+    </p>
+  )
+}
+
 function TeamDetailPage() {
   const { teamId } = useParams()
   const selectedTeam = teams.find((team) => team.id === teamId)
@@ -16,6 +39,11 @@ function TeamDetailPage() {
       title: label,
       body: '준비 중',
     }))
+  const serviceImages =
+    selectedTeam.imageGallery ??
+    (selectedTeam.imageSrc
+      ? [{ src: selectedTeam.imageSrc, alt: selectedTeam.imageAlt }]
+      : [])
 
   return (
     <section className="page-panel min-h-[calc(100vh-88px)] py-10 text-[color:var(--lion-black)] sm:py-14">
@@ -35,9 +63,22 @@ function TeamDetailPage() {
             >
               Service Detail
             </p>
-            <h1 className="mt-4 text-5xl font-black leading-none sm:text-6xl lg:text-7xl" lang="en">
-              {selectedTeam.name}
-            </h1>
+            <div className="service-title-lockup mt-4">
+              <h1 className="text-5xl font-black leading-none sm:text-6xl lg:text-7xl" lang="en">
+                {selectedTeam.name}
+              </h1>
+              <div className="service-logo-lockup" aria-label={selectedTeam.logoAlt}>
+                <div className="service-logo-frame">
+                  <img
+                    alt={selectedTeam.logoAlt}
+                    className="service-logo-image"
+                    decoding="async"
+                    loading="lazy"
+                    src={selectedTeam.logoSrc ?? likelionSkhuLogo}
+                  />
+                </div>
+              </div>
+            </div>
             <p className="mt-5 max-w-3xl text-xl font-black leading-8 sm:text-2xl">
               {selectedTeam.tagline}
             </p>
@@ -46,48 +87,44 @@ function TeamDetailPage() {
             </p>
           </div>
 
-          <div className="service-logo-lockup" aria-label={selectedTeam.logoAlt}>
-            <div className="service-logo-frame">
-              <img
-                alt={selectedTeam.logoAlt}
-                className="max-h-20 max-w-36 object-contain"
-                decoding="async"
-                loading="lazy"
-                src={selectedTeam.logoSrc ?? likelionSkhuLogo}
-              />
-            </div>
-            <span className="text-xs font-black uppercase tracking-[0.22em]" lang="en">
-              Logo
-            </span>
-          </div>
         </header>
 
-        <figure className="service-image-band mt-10">
-          {selectedTeam.imageSrc ? (
-            <img
-              alt={selectedTeam.imageAlt}
-              className="h-full w-full object-cover"
-              decoding="async"
-              loading="lazy"
-              src={selectedTeam.imageSrc}
-            />
+        <figure
+          className={`service-image-gallery mt-10 ${
+            serviceImages.length > 0 ? 'has-images' : ''
+          }`}
+        >
+          {serviceImages.length > 0 ? (
+            serviceImages.map((image) => (
+              <div className="service-image-band has-service-image" key={image.src}>
+                <img
+                  alt={image.alt}
+                  className="service-image"
+                  decoding="async"
+                  loading="lazy"
+                  src={image.src}
+                />
+              </div>
+            ))
           ) : (
-            <div className="service-image-placeholder">
-              <img
-                alt=""
-                aria-hidden="true"
-                className="h-16 w-auto object-contain opacity-90 sm:h-20"
-                decoding="async"
-                loading="lazy"
-                src={likelionSkhuLogo}
-              />
-              <div>
-                <p className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--primary-orange)]" lang="en">
-                  Service Image
-                </p>
-                <p className="mt-2 text-2xl font-black sm:text-4xl">
-                  대표 이미지 준비 중
-                </p>
+            <div className="service-image-band">
+              <div className="service-image-placeholder">
+                <img
+                  alt=""
+                  aria-hidden="true"
+                  className="h-16 w-auto object-contain opacity-90 sm:h-20"
+                  decoding="async"
+                  loading="lazy"
+                  src={likelionSkhuLogo}
+                />
+                <div>
+                  <p className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--primary-orange)]" lang="en">
+                    Service Image
+                  </p>
+                  <p className="mt-2 text-2xl font-black sm:text-4xl">
+                    대표 이미지 준비 중
+                  </p>
+                </div>
               </div>
             </div>
           )}
@@ -103,9 +140,7 @@ function TeamDetailPage() {
                 <h2 className="text-2xl font-black sm:text-3xl">
                   {section.title}
                 </h2>
-                <p className="mt-4 whitespace-pre-line text-base font-medium leading-8 sm:text-lg sm:leading-9">
-                  {section.body}
-                </p>
+                <DetailSectionBody section={section} />
               </div>
             </section>
           ))}
