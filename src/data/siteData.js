@@ -12,6 +12,8 @@ import team4Logo from '../assets/team4/team4_logo.png'
 import team4Thumbnail from '../assets/team4/team4_thumbnail.png'
 import team5Logo from '../assets/team5/team5_logo.png'
 import team5Thumbnail from '../assets/team5/team5_thumbnail.png'
+import cleanerPrizeImage from '../assets/goods/cleaner.jpg'
+import keyringPrizeImage from '../assets/goods/keyring.jpg'
 
 export const navItems = [
   { to: '/', label: '소개', end: true },
@@ -292,12 +294,12 @@ export const luckyDrawPrizes = [
   {
     name: '노트북 클리너',
     imageAlt: '노트북 클리너 상품 이미지',
-    imageSrc: null,
+    imageSrc: cleanerPrizeImage,
   },
   {
     name: '키링',
     imageAlt: '키링 상품 이미지',
-    imageSrc: null,
+    imageSrc: keyringPrizeImage,
   },
   {
     name: '포스트잇',
