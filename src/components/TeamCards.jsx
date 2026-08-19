@@ -134,7 +134,7 @@ function TeamCards() {
         </div>
       </div>
 
-      <div className="fan-draw-stage mt-14 hidden sm:mt-16 sm:block">
+      <div className="fan-draw-stage mt-14 hidden sm:mt-3 sm:mb-30 sm:block">
         {teams.map((team, index) => {
           const position = fanCards[index]
           const isActive = activeCard === index
@@ -169,7 +169,16 @@ function TeamCards() {
               <span className="card-suit" lang="en">LIKELION</span>
               <CardMark team={team} />
               <span className="mt-auto block">
-                <span className="block text-2xl font-black sm:text-3xl" lang="en">
+                <span
+                  className={`block text-2xl font-black sm:text-3xl ${
+                    ['team-1', 'team-4'].includes(team.id)
+                      ? 'desktop-card-title-compact'
+                      : ''
+                  } ${
+                    team.id === 'team-1' ? 'desktop-card-title-nowrap' : ''
+                  }`}
+                  lang="en"
+                >
                   {team.name}
                 </span>
                 <span className="mt-3 block text-sm font-bold leading-6">

@@ -23,6 +23,7 @@ export const teams = [
   {
     id: 'team-1',
     name: '성주 탐정사무소',
+    mobileDetailTitleLines: ['성주', '탐정사무소'],
     tagline: '팀명: 껐다켜봐',
     description: '1976년 MCM 뮌헨 아틀리에의 수습 디자이너가 되어, AI 증언과 오프라인 QR 단서를 조합해 사라진 시안을 복원하는 온, 오프라인 추리 웹게임',
     logoSrc: team1Logo,
@@ -109,6 +110,8 @@ export const teams = [
     logoAlt: 'Team 3 서비스 로고',
     imageSrc: team3Thumbnail,
     imageAlt: 'Team 3 서비스 대표 이미지',
+    imageOrientation: 'natural',
+    imageSize: 'mobile-app',
     detailSections: [
       {
         title: '문제 정의',
@@ -129,6 +132,18 @@ export const teams = [
 3. 지속성 및 사후 관리 부재:
    루틴을 시작하더라도 중간에 트러블이나 고민이 생겼을 때
    즉각적인 피드백을 받지 못해 관리를 중간에 포기하게 됩니다`,
+        mobileBody: `특별한 날을 앞둔 사람들은 피부 관리의 필요성을 크게 느끼지만, 기존 방식에서는 다음과 같은 3가지 한계에 직면합니다.
+
+1. 정보 과잉 및 혼란:
+블로그와 유튜브의 무분별한 콘텐츠는 오히려 불확실성을 키웁니다.
+사용자는 자신의 정확한 피부 타입을 알지 못한 채 유행하는 성분이나 제품을 무작위로 사용해 부작용을 겪습니다.
+
+2. 획일적 조언과 기간 고려 부재:
+개인의 피부 상태와 D-Day까지 남은 기간을 전혀 고려하지 않는 일률적인 루틴이 제공됩니다.
+(예: 중요한 행사를 불과 7일 앞두고 자극이 강한 레티놀을 사용했다가 피부 트러블이 발생하는 사례)
+
+3. 지속성 및 사후 관리 부재:
+루틴을 시작하더라도 중간에 트러블이나 고민이 생겼을 때 즉각적인 피드백을 받지 못해 관리를 중간에 포기하게 됩니다`,
       },
       {
         title: '핵심 기능',
@@ -153,6 +168,7 @@ export const teams = [
     logoAlt: 'Team 4 서비스 로고',
     imageSrc: team4Thumbnail,
     imageAlt: 'Team 4 서비스 대표 이미지',
+    imageOrientation: 'natural',
     detailSections: [
       {
         title: '문제 정의',
@@ -188,12 +204,14 @@ export const teams = [
   {
     id: 'team-5',
     name: 'K-Buddy',
+    mobileDetailTitleSize: 'compact',
     tagline: '팀명: 한바퀴반',
     description: 'K-Buddy는 한국에 체류 중인 외국인 유학생·워킹홀리데이·신규 거주자를 위한 AI 기반 생활 정착 지원 서비스입니다. 비자, 체류 행정, TOPIK 일정, 대입 정보처럼 \"놓치면 불이익으로 이어지는\" 행정 절차를 한 곳에서 확인하고, 본인 상황에 맞는 정보를 놓치지 않도록 캘린더와 알림으로 미리 챙겨줍니다.',
     logoSrc: team5Logo,
     logoAlt: 'Team 5 서비스 로고',
     imageSrc: team5Thumbnail,
     imageAlt: 'Team 5 서비스 대표 이미지',
+    imageOrientation: 'natural',
     detailSections: [
       {
         title: '문제 정의',

@@ -6,6 +6,18 @@ const urlPattern = /^https?:\/\/\S+$/
 const bulletPattern = /^-\s+/
 const numberedHeadingPattern = /^\d+\.\s+/
 
+function renderNumberedBodyLine(line, index) {
+  if (bulletPattern.test(line)) {
+    return (
+      <span className="service-detail-inline-list-item" key={index}>
+        {line.replace(bulletPattern, '')}
+      </span>
+    )
+  }
+
+  return <span key={index}>{line}</span>
+}
+
 function renderTextBlock(text, key) {
   const [title, ...bodyLines] = text.replace(bulletPattern, '').split('\n')
   const body = bodyLines.join('\n').trim()
@@ -23,7 +35,11 @@ function renderTextBlock(text, key) {
     return (
       <p className="service-detail-paragraph" key={key}>
         <strong className="service-detail-block-title">{title}</strong>
-        {body && <span>{body}</span>}
+        {body && (
+          <span className="service-detail-block-body">
+            {body.split('\n').map(renderNumberedBodyLine)}
+          </span>
+        )}
       </p>
     )
   }
@@ -69,6 +85,23 @@ function DetailSectionBody({ section }) {
   )
 }
 
+function ResponsiveDetailSectionBody({ section }) {
+  if (!section.mobileBody) {
+    return <DetailSectionBody section={section} />
+  }
+
+  return (
+    <>
+      <div className="service-detail-desktop-body">
+        <DetailSectionBody section={section} />
+      </div>
+      <div className="service-detail-mobile-body">
+        <DetailSectionBody section={{ ...section, body: section.mobileBody }} />
+      </div>
+    </>
+  )
+}
+
 function TeamDetailPage() {
   const { teamId } = useParams()
   const selectedTeam = teams.find((team) => team.id === teamId)
@@ -91,19 +124,14 @@ function TeamDetailPage() {
             src: selectedTeam.imageSrc,
             alt: selectedTeam.imageAlt,
             orientation: selectedTeam.imageOrientation,
+            size: selectedTeam.imageSize,
           },
         ]
       : [])
 
   return (
-    <section className="page-panel min-h-[calc(100vh-88px)] py-10 text-[color:var(--lion-black)] sm:py-14">
+    <section className={`page-panel service-detail-${selectedTeam.id} min-h-[calc(100vh-88px)] py-10 text-[color:var(--lion-black)] sm:py-14`}>
       <div className="service-detail-shell">
-        <Link
-          className="inline-flex w-fit rounded-full border-2 border-[var(--lion-black)] bg-[var(--layer-white)] px-4 py-2 text-sm font-black transition hover:-translate-y-1 hover:bg-[var(--utility-yellow)]"
-          to="/teams"
-        >
-          서비스 소개로 돌아가기
-        </Link>
 
         <header className="service-detail-hero mt-8">
           <div className="service-detail-copy">
@@ -114,8 +142,25 @@ function TeamDetailPage() {
               Service Detail
             </p>
             <div className="service-title-lockup mt-4">
-              <h1 className="text-5xl font-black leading-none sm:text-6xl lg:text-7xl" lang="en">
-                {selectedTeam.name}
+              <h1
+                className={`text-5xl font-black leading-none sm:text-6xl lg:text-7xl ${
+                  selectedTeam.mobileDetailTitleLines
+                    ? 'service-title-mobile-compact'
+                    : ''
+                } ${
+                  selectedTeam.mobileDetailTitleSize === 'compact'
+                    ? 'service-title-mobile-name-compact'
+                    : ''
+                }`}
+                lang="en"
+              >
+                {selectedTeam.mobileDetailTitleLines
+                  ? selectedTeam.mobileDetailTitleLines.map((line) => (
+                      <span className="service-title-line" key={line}>
+                        {line}
+                      </span>
+                    ))
+                  : selectedTeam.name}
               </h1>
               <div className="service-logo-lockup" aria-label={selectedTeam.logoAlt}>
                 <div className="service-logo-frame">
@@ -149,6 +194,10 @@ function TeamDetailPage() {
               <div
                 className={`service-image-band has-service-image ${
                   image.orientation === 'wide' ? 'is-wide' : ''
+                } ${
+                  image.orientation === 'natural' ? 'is-natural' : ''
+                } ${
+                  image.size === 'mobile-app' ? 'is-mobile-app' : ''
                 }`}
                 key={image.src}
               >
@@ -195,11 +244,18 @@ function TeamDetailPage() {
                 <h2 className="text-2xl font-black sm:text-3xl">
                   {section.title}
                 </h2>
-                <DetailSectionBody section={section} />
+                <ResponsiveDetailSectionBody section={section} />
               </div>
             </section>
           ))}
         </div>
+
+        <Link
+          className="mt-10 inline-flex w-fit rounded-full border-2 border-[var(--lion-black)] bg-[var(--layer-white)] px-4 py-2 text-sm font-black transition hover:-translate-y-1 hover:bg-[var(--utility-yellow)]"
+          to="/teams"
+        >
+          서비스 소개로 돌아가기
+        </Link>
       </div>
     </section>
   )

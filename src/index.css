@@ -719,6 +719,10 @@ body.is-prize-modal-open nav {
   object-fit: contain;
 }
 
+.service-title-line + .service-title-line::before {
+  content: " ";
+}
+
 .service-image-gallery {
   display: grid;
 }
@@ -762,11 +766,27 @@ body.is-prize-modal-open nav {
   aspect-ratio: 2000 / 1013;
 }
 
+.service-image-band.has-service-image.is-natural {
+  flex-basis: min(100%, 720px);
+  width: min(100%, 720px);
+  aspect-ratio: auto;
+}
+
+.service-image-band.has-service-image.is-mobile-app {
+  flex-basis: min(92%, 520px);
+  width: min(92%, 520px);
+}
+
 .service-image {
   width: 100%;
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
+}
+
+.service-image-band.has-service-image.is-natural .service-image {
+  height: auto;
+  object-fit: contain;
 }
 
 .service-image-placeholder {
@@ -823,6 +843,30 @@ body.is-prize-modal-open nav {
 
 .service-detail-block-title + span {
   display: block;
+}
+
+.service-detail-block-body > span {
+  display: block;
+}
+
+.service-detail-inline-list-item {
+  position: relative;
+  padding-left: 16px;
+}
+
+.service-detail-inline-list-item::before {
+  content: "";
+  position: absolute;
+  top: 0.92em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.service-detail-mobile-body {
+  display: none;
 }
 
 .service-detail-list {
@@ -1432,6 +1476,14 @@ body.is-prize-modal-open nav {
     font-size: 10px;
   }
 
+  .draw-card .desktop-card-title-compact {
+    font-size: 24px;
+  }
+
+  .draw-card .desktop-card-title-nowrap {
+    white-space: nowrap;
+  }
+
   .card-mark {
     top: 84px;
     right: 24px;
@@ -1444,14 +1496,46 @@ body.is-prize-modal-open nav {
   }
 
   .card-logo-mark {
-    top: 58px;
-    right: 16px;
-    width: 112px;
-    height: 112px;
+    top: 66px;
+    right: 24px;
+    width: 92px;
+    height: 92px;
   }
 }
 
 @media (max-width: 520px) {
+  .service-detail-desktop-body {
+    display: none;
+  }
+
+  .service-detail-mobile-body {
+    display: block;
+  }
+
+  .service-title-mobile-compact {
+    font-size: 40px;
+    line-height: 1.05;
+  }
+
+  .service-title-mobile-compact .service-title-line {
+    display: block;
+  }
+
+  .service-title-mobile-compact .service-title-line + .service-title-line::before {
+    content: none;
+  }
+
+  .service-title-mobile-name-compact {
+    font-size: 42px;
+    white-space: nowrap;
+  }
+
+  .service-detail-team-5 .service-detail-link {
+    overflow-wrap: normal;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+
   .service-content-section {
     grid-template-columns: 1fr;
     gap: 8px;
@@ -1478,6 +1562,10 @@ body.is-prize-modal-open nav {
     font-size: 11px;
   }
 
+  .draw-card .desktop-card-title-compact {
+    font-size: 25px;
+  }
+
   .card-mark {
     top: 92px;
     right: 28px;
@@ -1490,9 +1578,9 @@ body.is-prize-modal-open nav {
   }
 
   .card-logo-mark {
-    top: 62px;
-    right: 18px;
-    width: 132px;
-    height: 132px;
+    top: 74px;
+    right: 28px;
+    width: 104px;
+    height: 104px;
   }
 }
