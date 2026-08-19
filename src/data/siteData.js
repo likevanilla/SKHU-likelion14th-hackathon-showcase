@@ -57,8 +57,8 @@ export const teams = [
   },
   {
     id: 'team-2',
-    name: '밤새조',
-    tagline: '팀명: 레주밍',
+    name: '레주밍',
+    tagline: '팀명: 밤새조',
     description: 'AI가 이력서와 채용공고를 분석해, 지원 국가에 맞는 형식과 표현으로 이력서를 개선해주는 해외 취업 이력서 로컬라이징 서비스',
     logoSrc: team2Logo,
     logoAlt: '레주밍 서비스 로고',
@@ -297,19 +297,19 @@ export const detailLabels = ['문제 정의', '핵심 기능', '데모 링크', 
 
 export const exhibitionSlots = [
   {
-    teamId: 'team-1',
+    teamId: 'team-2',
     time: '12:40 - 13:45',
   },
   {
-    teamId: 'team-2',
+    teamId: 'team-4',
     time: '13:45 - 14:50',
   },
   {
-    teamId: 'team-3',
+    teamId: 'team-1',
     time: '14:50 - 15:55',
   },
   {
-    teamId: 'team-4',
+    teamId: 'team-3',
     time: '15:55 - 17:00',
   },
   {
