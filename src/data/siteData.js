@@ -10,6 +10,8 @@ import team3Logo from '../assets/team3/team3_logo.png'
 import team3Thumbnail from '../assets/team3/team3_thumbnail.png'
 import team4Logo from '../assets/team4/team4_logo.png'
 import team4Thumbnail from '../assets/team4/team4_thumbnail.png'
+import team5Logo from '../assets/team5/team5_logo.png'
+import team5Thumbnail from '../assets/team5/team5_thumbnail.png'
 
 export const navItems = [
   { to: '/', label: '소개', end: true },
@@ -185,25 +187,55 @@ export const teams = [
   },
   {
     id: 'team-5',
-    name: 'Team 5',
-    tagline: '서비스 소개 준비 중',
-    description: '문제 정의, 핵심 기능, 데모 링크를 연결할 자리입니다.',
-    logoSrc: null,
+    name: 'K-Buddy',
+    tagline: '팀명: 한바퀴반',
+    description: 'K-Buddy는 한국에 체류 중인 외국인 유학생·워킹홀리데이·신규 거주자를 위한 AI 기반 생활 정착 지원 서비스입니다. 비자, 체류 행정, TOPIK 일정, 대입 정보처럼 \"놓치면 불이익으로 이어지는\" 행정 절차를 한 곳에서 확인하고, 본인 상황에 맞는 정보를 놓치지 않도록 캘린더와 알림으로 미리 챙겨줍니다.',
+    logoSrc: team5Logo,
     logoAlt: 'Team 5 서비스 로고',
-    imageSrc: null,
+    imageSrc: team5Thumbnail,
     imageAlt: 'Team 5 서비스 대표 이미지',
     detailSections: [
       {
         title: '문제 정의',
-        body: '팀이 해결하고 싶은 문제와 사용자의 불편함을 자세히 소개할 수 있는 영역입니다. 글이 길어져도 카드 안에 갇히지 않고 페이지 흐름 안에서 자연스럽게 읽히도록 구성했습니다.',
+        body: `1. 정보가 여러 정부기관 사이트에 흩어져 있음
+- 비자/외국인등록: 하이코리아
+- 시험 일정: topik.go.kr
+- 법령 원문: 국가법령정보센터(law.go.kr)
+- 대입 정보: Study in Korea
+각 사이트마다 UI, 용어, 최신성이 달라 본인에게 필요한 정보를 종합적으로 파악하기 어렵습니다.
+
+2. 정보 대부분이 한국어 중심으로 제공됨
+외국인 입장에서 법령 원문이나 행정 공지를 이해하기 쉽지 않습니다.
+
+3. 기한을 놓치면 실제 불이익으로 이어짐
+- 외국인등록: 입국 후 90일 이내 (출입국관리법 제31조)
+- 체류지 변경신고: 이사 후 15일 이내 (출입국관리법 제36조)
+- 체류기간 연장: 만료일 이전에만 신청 가능
+위 절차들은 단순 "참고사항"이 아니라 법적 의무이며, 지연 시 과태료 등 불이익이 발생할 수 있습니다.
+
+4. 개인 상황에 맞는 정보만 선별해서 알려주는 서비스가 없음
+대부분의 정보 제공 채널은 모든 사용자에게 동일한 정보를 나열할 뿐, "나는 D-2 비자고 체류기간이 곧 만료되는데 뭘 먼저 해야 하지?"에 답 해주지 않습니다.`,
       },
       {
         title: '핵심 기능',
-        body: '서비스의 주요 기능, 사용 흐름, 차별점, 기대 효과를 문단 단위로 충분히 설명할 수 있습니다.',
+        body: `1. 캘린더 — 공통 일정 + 개인 일정 통합 조회
+- 월별/임박(7일 이내) 일정 조회
+- TOPIK 접수기간·시험일 등 공통 일정을 신청기간/시험기간으로 명확히 구분
+- 체류기간 만료 30일 전(D-30) 개인 알림을 캘린더에 자동으로 끼워 보여줌(별도 입력 없이, 본인 프로필의 체류만료일 기준으로 자동 계산)
+
+2. 세부정보(가이드) — 카테고리별 실전 가이드
+- 비자 / TOPIK / 법률·행정 / 대입 4대 카테고리
+- 요약 → 핵심 주의사항 → 단계별 방법 → 주의사항 → 팁 → FAQ 구조로, "지금 이 상황에서 뭘 해야 하는지" 행동 중심으로 정리
+- 법률 관련 항목은 법령 원문(출입국관리법)을 근거로 작성해 신뢰도 확보
+
+3. AI 기반 맞춤 알림 (개발 중)
+- 사용자 프로필(비자 종류, 체류기간, 입국일, 외국인등록 여부 등)을 기반으로 매일 자동으로 "지금 이 사용자에게 필요한 알림"을 AI가 우선순위와 함께 추천
+- 체류기간 만료 임박, 외국인등록 미등록 등 조건을 자동 감지해 알림 생성
+- 사용자의 알림 수신 설정(전체/중요만/받지 않음)에 따라 노출 여부 조절`,
       },
       {
         title: '데모 링크',
-        body: '배포 링크, GitHub 저장소, 발표 자료, QR 코드 등 실제 체험으로 이어지는 정보를 함께 배치할 수 있습니다.',
+        body: 'https://frontend-chi-pied-78.vercel.app/language',
       },
       {
         title: '피드백 폼',
