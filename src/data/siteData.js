@@ -8,7 +8,7 @@ import team2Logo from '../assets/team2/team2_logo.png'
 import team2Thumbnail from '../assets/team2/team2_thumbnail.png'
 import team3Logo from '../assets/team3/team3_logo.png'
 import team3Thumbnail from '../assets/team3/team3_thumbnail.png'
-import team4Logo from '../assets/team4/team4_logo.png'
+import team4Logo from '../assets/team4/team4_logo_transparent.png'
 import team4Thumbnail from '../assets/team4/team4_thumbnail.png'
 import team5Logo from '../assets/team5/team5_logo.png'
 import team5Thumbnail from '../assets/team5/team5_thumbnail.png'
@@ -27,6 +27,7 @@ export const teams = [
     name: '성주 탐정사무소',
     mobileDetailTitleLines: ['성주', '탐정사무소'],
     tagline: '팀명: 껐다켜봐',
+    cardTagline: '껐다켜봐',
     description: '1976년 MCM 뮌헨 아틀리에의 수습 디자이너가 되어, AI 증언과 오프라인 QR 단서를 조합해 사라진 시안을 복원하는 온, 오프라인 추리 웹게임',
     logoSrc: team1Logo,
     logoAlt: '껐다켜봐 서비스 로고',
@@ -62,6 +63,7 @@ export const teams = [
     id: 'team-2',
     name: '레주밍',
     tagline: '팀명: 밤새조',
+    cardTagline: '밤새조',
     description: 'AI가 이력서와 채용공고를 분석해, 지원 국가에 맞는 형식과 표현으로 이력서를 개선해주는 해외 취업 이력서 로컬라이징 서비스',
     logoSrc: team2Logo,
     logoAlt: '레주밍 서비스 로고',
@@ -107,6 +109,7 @@ export const teams = [
     id: 'team-3',
     name: '이쁠날',
     tagline: '팀명 : 파라파라나춰야지',
+    cardTagline: '파라파라나춰야지',
     description: '다들 살다보면 이런 생각을 해본 적 있지 않나요? \"이번 여행 전까지 꼭 살도 빼고 일찍 자고 인스턴스 줄여서 더 나은 모습으로 가야겠다!\" 본 서비스는 결혼식, 졸업식, 면접 등 \'특별한 D-Day\'를 앞둔 사용자를 위해 AI 피부 진단부터 기간별 맞춤 루틴, 실시간 고민 대응, D-Day 리포트까지 제공하는 D-Day 맞춤형 피부 웰니스 솔루션입니다.',
     logoSrc: team3Logo,
     logoAlt: 'Team 3 서비스 로고',
@@ -165,6 +168,7 @@ export const teams = [
     id: 'team-4',
     name: 'Memory Atelier',
     tagline: '팀명: 포미닛',
+    cardTagline: '포미닛',
     description: '포미닛은 사연이 있는 옷을 AI로 분석해서 MCM 감성이 들어간 3D 럭셔리 에디션으로 바꿔주는 서비스이다. 만든 결과물은 디지털 컬렉션으로 보존하고 공유할 수 있으며 원하면 실물 제작까지 신청받는다. 사연 있는 옷 사진과 사연을 적어서 올리면 된다. AI는 vision기술을 통해 옷의 색감·패턴·질감 같은 시각적 특징과 nlp기술로 사용자의 이야기에 담긴 감정·상황을 함께 이해해, 새로운 제품을 만드는 것에서 나아가 한 사람만의 추억을 럭셔리한 디지털 자산으로 다시 해석한다.',
     logoSrc: team4Logo,
     logoAlt: 'Team 4 서비스 로고',
@@ -208,6 +212,7 @@ export const teams = [
     name: 'K-Buddy',
     mobileDetailTitleSize: 'compact',
     tagline: '팀명: 한바퀴반',
+    cardTagline: '한바퀴반',
     description: 'K-Buddy는 한국에 체류 중인 외국인 유학생·워킹홀리데이·신규 거주자를 위한 AI 기반 생활 정착 지원 서비스입니다. 비자, 체류 행정, TOPIK 일정, 대입 정보처럼 \"놓치면 불이익으로 이어지는\" 행정 절차를 한 곳에서 확인하고, 본인 상황에 맞는 정보를 놓치지 않도록 캘린더와 알림으로 미리 챙겨줍니다.',
     logoSrc: team5Logo,
     logoAlt: 'Team 5 서비스 로고',

@@ -1168,6 +1168,7 @@ body.is-prize-modal-open nav {
 
 .card-mark {
   position: absolute;
+  z-index: 2;
   top: 72px;
   right: 18px;
   width: 38px;
@@ -1187,14 +1188,17 @@ body.is-prize-modal-open nav {
 
 .card-logo-mark {
   display: grid;
-  top: 52px;
-  right: 30px;
-  width: 88px;
-  height: 88px;
+  top: 46%;
+  right: auto;
+  left: 50%;
+  z-index: 3;
+  width: 148px;
+  height: 148px;
   place-items: center;
   border: 0;
   border-radius: 0;
   background: transparent;
+  transform: translate(-50%, -50%);
 }
 
 .card-logo-mark::after {
@@ -1206,6 +1210,20 @@ body.is-prize-modal-open nav {
   height: 100%;
   border-radius: 10px;
   object-fit: contain;
+}
+
+.mobile-draw-card .card-logo-mark {
+  top: 38%;
+  width: 124px;
+  height: 124px;
+}
+
+.team-card-team-4 .card-logo-mark {
+  top: 40%;
+}
+
+.mobile-draw-card.team-card-team-4 .card-logo-mark {
+  top: 34%;
 }
 
 .modal-enter {
@@ -1496,10 +1514,12 @@ body.is-prize-modal-open nav {
   }
 
   .card-logo-mark {
-    top: 66px;
-    right: 24px;
-    width: 92px;
-    height: 92px;
+    top: 45%;
+    right: auto;
+    left: 50%;
+    width: 154px;
+    height: 154px;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -1578,9 +1598,11 @@ body.is-prize-modal-open nav {
   }
 
   .card-logo-mark {
-    top: 74px;
-    right: 28px;
-    width: 104px;
-    height: 104px;
+    top: 45%;
+    right: auto;
+    left: 50%;
+    width: 168px;
+    height: 168px;
+    transform: translate(-50%, -50%);
   }
 }
