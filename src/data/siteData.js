@@ -1,13 +1,15 @@
+import team1Logo from '../assets/team1/team1_logo.png'
+import team1Thumbnail from '../assets/team1/team1_thumbnail.png'
+import team1Thumbnail2 from '../assets/team1/team1_thumbnail2.png'
+import team1Thumbnail3 from '../assets/team1/team1_thumbnail3.png'
+import team1Thumbnail4 from '../assets/team1/team1_thumbnail4.png'
+import team1Thumbnail5 from '../assets/team1/team1_thumbnail5.png'
 import team2Logo from '../assets/team2/team2_logo.png'
 import team2Thumbnail from '../assets/team2/team2_thumbnail.png'
+import team3Logo from '../assets/team3/team3_logo.png'
+import team3Thumbnail from '../assets/team3/team3_thumbnail.png'
 import team4Logo from '../assets/team4/team4_logo.png'
 import team4Thumbnail from '../assets/team4/team4_thumbnail.png'
-import team5Logo from '../assets/team5/team5_logo.png'
-import team5Thumbnail from '../assets/team5/team5_thumbnail.png'
-import team5Thumbnail2 from '../assets/team5/team5_thumbnail2.png'
-import team5Thumbnail3 from '../assets/team5/team5_thumbnail3.png'
-import team5Thumbnail4 from '../assets/team5/team5_thumbnail4.png'
-import team5Thumbnail5 from '../assets/team5/team5_thumbnail5.png'
 
 export const navItems = [
   { to: '/', label: '소개', end: true },
@@ -18,25 +20,32 @@ export const navItems = [
 export const teams = [
   {
     id: 'team-1',
-    name: 'Team 1',
-    tagline: '서비스 소개 준비 중',
-    description: '문제 정의, 핵심 기능, 데모 링크를 연결할 자리입니다.',
-    logoSrc: null,
-    logoAlt: 'Team 1 서비스 로고',
-    imageSrc: null,
-    imageAlt: 'Team 1 서비스 대표 이미지',
+    name: '성주 탐정사무소',
+    tagline: '팀명: 껐다켜봐',
+    description: '1976년 MCM 뮌헨 아틀리에의 수습 디자이너가 되어, AI 증언과 오프라인 QR 단서를 조합해 사라진 시안을 복원하는 온, 오프라인 추리 웹게임',
+    logoSrc: team1Logo,
+    logoAlt: '껐다켜봐 서비스 로고',
+    imageSrc: team1Thumbnail,
+    imageAlt: '껐다켜봐 서비스 대표 이미지',
+    imageGallery: [
+      { src: team1Thumbnail, alt: '껐다켜봐 서비스 대표 이미지 1' },
+      { src: team1Thumbnail2, alt: '껐다켜봐 서비스 대표 이미지 2' },
+      { src: team1Thumbnail3, alt: '껐다켜봐 서비스 대표 이미지 3' },
+      { src: team1Thumbnail4, alt: '껐다켜봐 서비스 대표 이미지 4' },
+      { src: team1Thumbnail5, alt: '껐다켜봐 서비스 대표 이미지 5' },
+    ],
     detailSections: [
       {
         title: '문제 정의',
-        body: '팀이 해결하고 싶은 문제와 사용자의 불편함을 자세히 소개할 수 있는 영역입니다. 글이 길어져도 카드 안에 갇히지 않고 페이지 흐름 안에서 자연스럽게 읽히도록 구성했습니다.',
+        body: ' MCM은 1976년 뮌헨에서 시작해 여행과 이동성, 비세토스 패턴, 기능 중심의 디자인 철학을 발전시켜 왔다. 하지만 이러한 헤리티지는 주로 전시 설명처럼 수동적인 정보로 전달돼 젊은 고객이 흥미를 느끼고 기억하기 어렵다. 그 결과 젊은 고객은 브랜드 역사를 어렵게 느끼고, 가방의 외형은 보지만 패턴·스트랩·수납 구조에 담긴 설계 의도까지 이해하지 못하며, 오프라인 방문 역시 제품 감상에 그쳐 개인화된 경험이 남지 않는다. ‘성주 탐정사무소’는 실제 역사와 제품 철학을 고객이 직접 탐색하고 기억할 수 있는 참여형 브랜드 경험이 필요하다는 생각에서 제작되었다.',
       },
       {
         title: '핵심 기능',
-        body: '서비스의 주요 기능, 사용 흐름, 차별점, 기대 효과를 문단 단위로 충분히 설명할 수 있습니다.',
+        body: ' 사용자는 MCM의 수습 디자이너가 되어 여행·핸즈프리·데일리 중 가방 스타일을 선택하고 실제 MCM 제품을 레퍼런스로 받는다. 비세토스 패턴과 외관을 복원하는 SIGNATURE, 스트랩·손잡이·수납 구조를 복원하는 FUNCTION 사건을 진행한다. 사건마다 용의자 2명과 대화하며, 한 사람당 최대 3번 질문한다. AI는 정해진 사실과 인물 성격을 유지하며 유동적으로 답변한다. 대화 후 오프라인 공간의 QR을 스캔해 반납 기록, 촬영 사진, 출입·반입 기록 등의 현장 단서를 획득한다. 사용자는 AI 증언과 QR 증거를 비교해 용의자와 사건의 결론을 선택한다. 두 사건을 해결하면 완성된 제품과 구매 링크가 공개되며, 결과 보상으로 1인 1개의 디지털 Designer Pass를 발급한다.',
       },
       {
         title: '데모 링크',
-        body: '배포 링크, GitHub 저장소, 발표 자료, QR 코드 등 실제 체험으로 이어지는 정보를 함께 배치할 수 있습니다.',
+        body: 'https://seongju-detective.vercel.app/',
       },
       {
         title: '피드백 폼',
@@ -91,25 +100,41 @@ export const teams = [
   },
   {
     id: 'team-3',
-    name: 'Team 3',
-    tagline: '서비스 소개 준비 중',
-    description: '해커톤 당일 관람객이 빠르게 이해할 수 있는 요약을 넣을 예정입니다.',
-    logoSrc: null,
+    name: '이쁠날',
+    tagline: '팀명 : 파라파라나춰야지',
+    description: '다들 살다보면 이런 생각을 해본 적 있지 않나요? \"이번 여행 전까지 꼭 살도 빼고 일찍 자고 인스턴스 줄여서 더 나은 모습으로 가야겠다!\" 본 서비스는 결혼식, 졸업식, 면접 등 \'특별한 D-Day\'를 앞둔 사용자를 위해 AI 피부 진단부터 기간별 맞춤 루틴, 실시간 고민 대응, D-Day 리포트까지 제공하는 D-Day 맞춤형 피부 웰니스 솔루션입니다.',
+    logoSrc: team3Logo,
     logoAlt: 'Team 3 서비스 로고',
-    imageSrc: null,
+    imageSrc: team3Thumbnail,
     imageAlt: 'Team 3 서비스 대표 이미지',
     detailSections: [
       {
         title: '문제 정의',
-        body: '관람객이 서비스의 필요성을 빠르게 이해할 수 있도록 문제 상황을 설명합니다.',
+        body: `특별한 날을 앞둔 사람들은 피부 관리의 필요성을 크게 느끼지만,
+기존 방식에서는 다음과 같은 3가지 한계에 직면합니다.
+
+1. 정보 과잉 및 혼란:
+   블로그와 유튜브의 무분별한 콘텐츠는 오히려 불확실성을 키웁니다.
+   사용자는 자신의 정확한 피부 타입을 알지 못한 채
+   유행하는 성분이나 제품을 무작위로 사용해 부작용을 겪습니다.
+
+2. 획일적 조언과 기간 고려 부재:
+   개인의 피부 상태와 D-Day까지 남은 기간을 전혀 고려하지 않는
+   일률적인 루틴이 제공됩니다.
+   (예: 중요한 행사를 불과 7일 앞두고 자극이 강한 레티놀을
+   사용했다가 피부 트러블이 발생하는 사례)
+
+3. 지속성 및 사후 관리 부재:
+   루틴을 시작하더라도 중간에 트러블이나 고민이 생겼을 때
+   즉각적인 피드백을 받지 못해 관리를 중간에 포기하게 됩니다`,
       },
       {
         title: '핵심 기능',
-        body: '사용자가 어떤 순서로 서비스를 경험하는지, 가장 중요한 기능은 무엇인지 길게 풀어쓸 수 있습니다.',
+        body: '18문항 설문으로 피부를 정량 진단하고, D-Day에 맞춰 AI가 루틴·성분을 추천합니다. 매일 TODO 리스트로 관리 지속성을 유지하며, 고민 발생 시 AI가 즉시 대응 지침을 제공합니다.',
       },
       {
         title: '데모 링크',
-        body: '시연 페이지나 발표 자료 링크를 추가할 수 있습니다.',
+        body: 'https://www.d-dayskincare.cloud/',
       },
       {
         title: '피드백 폼',
@@ -160,32 +185,25 @@ export const teams = [
   },
   {
     id: 'team-5',
-    name: '성주 탐정사무소',
-    tagline: '팀명: 껐다켜봐',
-    description: '1976년 MCM 뮌헨 아틀리에의 수습 디자이너가 되어, AI 증언과 오프라인 QR 단서를 조합해 사라진 시안을 복원하는 온, 오프라인 추리 웹게임',
-    logoSrc: team5Logo,
-    logoAlt: '껐다켜봐 서비스 로고',
-    imageSrc: team5Thumbnail,
-    imageAlt: '껐다켜봐 서비스 대표 이미지',
-    imageGallery: [
-      { src: team5Thumbnail, alt: '껐다켜봐 서비스 대표 이미지 1' },
-      { src: team5Thumbnail2, alt: '껐다켜봐 서비스 대표 이미지 2' },
-      { src: team5Thumbnail3, alt: '껐다켜봐 서비스 대표 이미지 3' },
-      { src: team5Thumbnail4, alt: '껐다켜봐 서비스 대표 이미지 4' },
-      { src: team5Thumbnail5, alt: '껐다켜봐 서비스 대표 이미지 5' },
-    ],
+    name: 'Team 5',
+    tagline: '서비스 소개 준비 중',
+    description: '문제 정의, 핵심 기능, 데모 링크를 연결할 자리입니다.',
+    logoSrc: null,
+    logoAlt: 'Team 5 서비스 로고',
+    imageSrc: null,
+    imageAlt: 'Team 5 서비스 대표 이미지',
     detailSections: [
       {
         title: '문제 정의',
-        body: ' MCM은 1976년 뮌헨에서 시작해 여행과 이동성, 비세토스 패턴, 기능 중심의 디자인 철학을 발전시켜 왔다. 하지만 이러한 헤리티지는 주로 전시 설명처럼 수동적인 정보로 전달돼 젊은 고객이 흥미를 느끼고 기억하기 어렵다. 그 결과 젊은 고객은 브랜드 역사를 어렵게 느끼고, 가방의 외형은 보지만 패턴·스트랩·수납 구조에 담긴 설계 의도까지 이해하지 못하며, 오프라인 방문 역시 제품 감상에 그쳐 개인화된 경험이 남지 않는다. ‘성주 탐정사무소’는 실제 역사와 제품 철학을 고객이 직접 탐색하고 기억할 수 있는 참여형 브랜드 경험이 필요하다는 생각에서 제작되었다.',
+        body: '팀이 해결하고 싶은 문제와 사용자의 불편함을 자세히 소개할 수 있는 영역입니다. 글이 길어져도 카드 안에 갇히지 않고 페이지 흐름 안에서 자연스럽게 읽히도록 구성했습니다.',
       },
       {
         title: '핵심 기능',
-        body: ' 사용자는 MCM의 수습 디자이너가 되어 여행·핸즈프리·데일리 중 가방 스타일을 선택하고 실제 MCM 제품을 레퍼런스로 받는다. 비세토스 패턴과 외관을 복원하는 SIGNATURE, 스트랩·손잡이·수납 구조를 복원하는 FUNCTION 사건을 진행한다. 사건마다 용의자 2명과 대화하며, 한 사람당 최대 3번 질문한다. AI는 정해진 사실과 인물 성격을 유지하며 유동적으로 답변한다. 대화 후 오프라인 공간의 QR을 스캔해 반납 기록, 촬영 사진, 출입·반입 기록 등의 현장 단서를 획득한다. 사용자는 AI 증언과 QR 증거를 비교해 용의자와 사건의 결론을 선택한다. 두 사건을 해결하면 완성된 제품과 구매 링크가 공개되며, 결과 보상으로 1인 1개의 디지털 Designer Pass를 발급한다.',
+        body: '서비스의 주요 기능, 사용 흐름, 차별점, 기대 효과를 문단 단위로 충분히 설명할 수 있습니다.',
       },
       {
         title: '데모 링크',
-        body: 'https://seongju-detective.vercel.app/',
+        body: '배포 링크, GitHub 저장소, 발표 자료, QR 코드 등 실제 체험으로 이어지는 정보를 함께 배치할 수 있습니다.',
       },
       {
         title: '피드백 폼',

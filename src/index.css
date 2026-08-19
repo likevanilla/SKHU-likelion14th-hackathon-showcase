@@ -816,6 +816,15 @@ body.is-prize-modal-open nav {
   margin-top: 16px;
 }
 
+.service-detail-block-title {
+  display: block;
+  font-weight: 900;
+}
+
+.service-detail-block-title + span {
+  display: block;
+}
+
 .service-detail-list {
   display: grid;
   gap: 18px;

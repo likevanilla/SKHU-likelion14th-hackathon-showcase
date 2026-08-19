@@ -4,6 +4,7 @@ import { detailLabels, teams } from '../data/siteData'
 
 const urlPattern = /^https?:\/\/\S+$/
 const bulletPattern = /^-\s+/
+const numberedHeadingPattern = /^\d+\.\s+/
 
 function renderTextBlock(text, key) {
   const [title, ...bodyLines] = text.replace(bulletPattern, '').split('\n')
@@ -15,6 +16,15 @@ function renderTextBlock(text, key) {
         <strong>{title}</strong>
         {body && <p>{body}</p>}
       </li>
+    )
+  }
+
+  if (numberedHeadingPattern.test(text)) {
+    return (
+      <p className="service-detail-paragraph" key={key}>
+        <strong className="service-detail-block-title">{title}</strong>
+        {body && <span>{body}</span>}
+      </p>
     )
   }
 
