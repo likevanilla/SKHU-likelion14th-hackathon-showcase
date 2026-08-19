@@ -3,25 +3,59 @@ import likelionSkhuLogo from '../assets/logo.svg'
 import { detailLabels, teams } from '../data/siteData'
 
 const urlPattern = /^https?:\/\/\S+$/
+const bulletPattern = /^-\s+/
 
-function DetailSectionBody({ section }) {
-  if (urlPattern.test(section.body)) {
+function renderTextBlock(text, key) {
+  const [title, ...bodyLines] = text.replace(bulletPattern, '').split('\n')
+  const body = bodyLines.join('\n').trim()
+
+  if (bulletPattern.test(text)) {
     return (
-      <a
-        className="service-detail-link mt-4"
-        href={section.body}
-        rel="noreferrer"
-        target="_blank"
-      >
-        {section.body}
-      </a>
+      <li className="service-detail-list-item" key={key}>
+        <strong>{title}</strong>
+        {body && <p>{body}</p>}
+      </li>
     )
   }
 
   return (
-    <p className="mt-4 whitespace-pre-line text-base font-medium leading-8 sm:text-lg sm:leading-9">
-      {section.body}
+    <p className="service-detail-paragraph" key={key}>
+      {text}
     </p>
+  )
+}
+
+function DetailSectionBody({ section }) {
+  const body = section.body.trim()
+
+  if (urlPattern.test(body)) {
+    return (
+      <a
+        className="service-detail-link mt-4"
+        href={body}
+        rel="noreferrer"
+        target="_blank"
+      >
+        {body}
+      </a>
+    )
+  }
+
+  const blocks = body.split(/\n\s*\n/).filter(Boolean)
+  const hasBulletList = blocks.some((block) => bulletPattern.test(block))
+
+  if (hasBulletList) {
+    return (
+      <ul className="service-detail-list mt-4">
+        {blocks.map((block, index) => renderTextBlock(block, index))}
+      </ul>
+    )
+  }
+
+  return (
+    <div className="mt-4">
+      {blocks.map((block, index) => renderTextBlock(block, index))}
+    </div>
   )
 }
 
@@ -42,7 +76,13 @@ function TeamDetailPage() {
   const serviceImages =
     selectedTeam.imageGallery ??
     (selectedTeam.imageSrc
-      ? [{ src: selectedTeam.imageSrc, alt: selectedTeam.imageAlt }]
+      ? [
+          {
+            src: selectedTeam.imageSrc,
+            alt: selectedTeam.imageAlt,
+            orientation: selectedTeam.imageOrientation,
+          },
+        ]
       : [])
 
   return (
@@ -96,7 +136,12 @@ function TeamDetailPage() {
         >
           {serviceImages.length > 0 ? (
             serviceImages.map((image) => (
-              <div className="service-image-band has-service-image" key={image.src}>
+              <div
+                className={`service-image-band has-service-image ${
+                  image.orientation === 'wide' ? 'is-wide' : ''
+                }`}
+                key={image.src}
+              >
                 <img
                   alt={image.alt}
                   className="service-image"

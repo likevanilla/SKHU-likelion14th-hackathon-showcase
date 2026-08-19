@@ -756,6 +756,12 @@ body.is-prize-modal-open nav {
   scroll-snap-align: center;
 }
 
+.service-image-band.has-service-image.is-wide {
+  flex-basis: min(100%, 720px);
+  width: min(100%, 720px);
+  aspect-ratio: 2000 / 1013;
+}
+
 .service-image {
   width: 100%;
   height: 100%;
@@ -799,6 +805,50 @@ body.is-prize-modal-open nav {
   letter-spacing: 0.14em;
 }
 
+.service-detail-paragraph {
+  white-space: pre-line;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+.service-detail-paragraph + .service-detail-paragraph {
+  margin-top: 16px;
+}
+
+.service-detail-list {
+  display: grid;
+  gap: 18px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+.service-detail-list-item {
+  position: relative;
+  padding-left: 22px;
+}
+
+.service-detail-list-item::before {
+  content: "";
+  position: absolute;
+  top: 0.78em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--primary-orange);
+}
+
+.service-detail-list-item strong {
+  display: block;
+  font-weight: 900;
+}
+
+.service-detail-list-item p {
+  margin-top: 4px;
+}
+
 .service-detail-link {
   display: inline-flex;
   max-width: 100%;
@@ -818,6 +868,13 @@ body.is-prize-modal-open nav {
   color: var(--lion-black);
   transform: translateY(-1px);
   outline: none;
+}
+
+@media (min-width: 640px) {
+  .service-detail-paragraph,
+  .service-detail-list {
+    font-size: 18px;
+  }
 }
 
 .fan-draw-stage {

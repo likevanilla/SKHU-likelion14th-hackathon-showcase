@@ -1,3 +1,5 @@
+import team2Logo from '../assets/team2/team2_logo.png'
+import team2Thumbnail from '../assets/team2/team2_thumbnail.png'
 import team5Logo from '../assets/team5/team5_logo.png'
 import team5Thumbnail from '../assets/team5/team5_thumbnail.png'
 import team5Thumbnail2 from '../assets/team5/team5_thumbnail2.png'
@@ -34,29 +36,54 @@ export const teams = [
         title: '데모 링크',
         body: '배포 링크, GitHub 저장소, 발표 자료, QR 코드 등 실제 체험으로 이어지는 정보를 함께 배치할 수 있습니다.',
       },
+      {
+        title: '피드백 폼',
+        body: '피드백 폼 링크 준비 중입니다.',
+      },
     ],
   },
   {
     id: 'team-2',
-    name: 'Team 2',
-    tagline: '서비스 소개 준비 중',
-    description: '팀별 컬러와 스크린샷은 추후 상세 소개 화면에서 확장할 수 있습니다.',
-    logoSrc: null,
-    logoAlt: 'Team 2 서비스 로고',
-    imageSrc: null,
-    imageAlt: 'Team 2 서비스 대표 이미지',
+    name: '밤새조',
+    tagline: '레주밍',
+    description: 'AI가 이력서와 채용공고를 분석해, 지원 국가에 맞는 형식과 표현으로 이력서를 개선해주는 해외 취업 이력서 로컬라이징 서비스',
+    logoSrc: team2Logo,
+    logoAlt: '레주밍 서비스 로고',
+    imageSrc: team2Thumbnail,
+    imageAlt: '레주밍 서비스 대표 이미지',
+    imageOrientation: 'wide',
     detailSections: [
       {
         title: '문제 정의',
-        body: '서비스가 출발한 배경과 사용자가 겪는 문제를 충분한 길이의 글로 소개할 수 있습니다.',
+        body: '한국 학생들이 해외 인턴·취업에 지원할 때, 국가마다 다른 이력서 형식과 채용 문화의 차이로 어려움을 겪는 경우가 많다. 같은 경험과 역량도 현지 기준에 맞게 표현하지 못하면 서류 단계에서 경쟁력을 충분히 보여주기 어렵다.',
       },
       {
         title: '핵심 기능',
-        body: '화면 이미지와 함께 기능을 설명하고, 필요하다면 기능별 장점을 긴 본문으로 이어서 보여줄 수 있습니다.',
+        body: `- 이력서·채용공고 입력
+사용자가 이력서 텍스트와 이미지 텍스트, 지원 기업명, 채용공고, 목표 국가를 입력할 수 있다.
+
+- 국가별 이력서 관습 분석
+미국, 일본, 독일, 한국 등 국가별로 다른 사진, 개인정보, 지원동기, 경력 표현 방식을 분석한다.
+
+- AI 기반 강점 분석
+사용자의 경험과 채용공고를 비교해 직무와 연결되는 핵심 강점을 요약해준다.
+
+- 보완 필요 영역 제안
+지원 국가의 형식에 맞지 않는 부분이나 부족한 역량 표현, 근거가 약한 내용을 알려준다.
+
+- 맞춤형 코칭 인사이트 제공
+지원 기업과 국가에 맞춰 어떤 표현을 강화해야 하는지 구체적인 작성 방향을 제안한다.
+
+- AI 추천 이력서 본문 생성
+분석 결과를 바탕으로 바로 참고할 수 있는 현지화된 이력서 문장을 생성한다`,
       },
       {
         title: '데모 링크',
-        body: '서비스 링크와 관련 자료를 연결할 준비 영역입니다.',
+        body: 'https://front-blush-tau.vercel.app/',
+      },
+      {
+        title: '피드백 폼',
+        body: '피드백 폼 링크 준비 중입니다.',
       },
     ],
   },
@@ -82,6 +109,10 @@ export const teams = [
         title: '데모 링크',
         body: '시연 페이지나 발표 자료 링크를 추가할 수 있습니다.',
       },
+      {
+        title: '피드백 폼',
+        body: '피드백 폼 링크 준비 중입니다.',
+      },
     ],
   },
   {
@@ -105,6 +136,10 @@ export const teams = [
       {
         title: '데모 링크',
         body: '서비스 링크와 발표 자료를 함께 보여줄 수 있습니다.',
+      },
+      {
+        title: '피드백 폼',
+        body: '피드백 폼 링크 준비 중입니다.',
       },
     ],
   },
@@ -136,6 +171,10 @@ export const teams = [
       {
         title: '데모 링크',
         body: 'https://seongju-detective.vercel.app/',
+      },
+      {
+        title: '피드백 폼',
+        body: '피드백 폼 링크 준비 중입니다.',
       },
     ],
   },
@@ -189,7 +228,7 @@ export const luckyDrawPrizes = [
   },
 ]
 
-export const detailLabels = ['문제 정의', '핵심 기능', '데모 링크']
+export const detailLabels = ['문제 정의', '핵심 기능', '데모 링크', '피드백 폼']
 
 export const exhibitionSlots = [
   {
