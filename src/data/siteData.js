@@ -44,7 +44,7 @@ export const teams = [
   },
   {
     id: 'team-2',
-    name: '밤새조',
+    name: '멋지조',
     tagline: '레주밍',
     description: 'AI가 이력서와 채용공고를 분석해, 지원 국가에 맞는 형식과 표현으로 이력서를 개선해주는 해외 취업 이력서 로컬라이징 서비스',
     logoSrc: team2Logo,
