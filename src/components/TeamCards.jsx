@@ -59,7 +59,7 @@ function TeamCards() {
         <div className="mobile-card-stage">
           {outgoingMobileIndex !== null && (
             <article
-              className={`mobile-draw-card is-exiting is-${mobileDirection}`}
+              className={`mobile-draw-card team-card-${teams[outgoingMobileIndex].id} is-exiting is-${mobileDirection}`}
               onAnimationEnd={() => setOutgoingMobileIndex(null)}
             >
               <span className="card-corner">0{outgoingMobileIndex + 1}</span>
@@ -70,7 +70,7 @@ function TeamCards() {
                   {teams[outgoingMobileIndex].name}
                 </span>
                 <span className="mt-3 block text-sm font-bold leading-6">
-                  {teams[outgoingMobileIndex].tagline}
+                  {teams[outgoingMobileIndex].cardTagline ?? teams[outgoingMobileIndex].tagline}
                 </span>
                 <span className="mt-5 inline-block rounded-full bg-[var(--primary-orange)] px-4 py-2 text-xs font-black text-[color:var(--layer-white)]">
                   자세히 보기
@@ -80,7 +80,7 @@ function TeamCards() {
           )}
 
           <article
-            className={`mobile-draw-card is-entering is-${mobileDirection}`}
+            className={`mobile-draw-card team-card-${mobileTeam.id} is-entering is-${mobileDirection}`}
             key={mobileTeam.name}
             onClick={() => openTeam(mobileTeam)}
           >
@@ -92,7 +92,7 @@ function TeamCards() {
                 {mobileTeam.name}
               </span>
               <span className="mt-3 block text-sm font-bold leading-6">
-                {mobileTeam.tagline}
+                {mobileTeam.cardTagline ?? mobileTeam.tagline}
               </span>
               <button
                 className="mt-5 rounded-full bg-[var(--primary-orange)] px-4 py-2 text-xs font-black text-[color:var(--layer-white)]"
@@ -134,14 +134,14 @@ function TeamCards() {
         </div>
       </div>
 
-      <div className="fan-draw-stage mt-14 hidden sm:mt-16 sm:block">
+      <div className="fan-draw-stage mt-14 hidden sm:mt-3 sm:mb-30 sm:block">
         {teams.map((team, index) => {
           const position = fanCards[index]
           const isActive = activeCard === index
 
           return (
             <article
-              className={`draw-card ${isActive ? 'is-active' : ''}`}
+              className={`draw-card team-card-${team.id} ${isActive ? 'is-active' : ''}`}
               key={team.name}
               onBlur={() => setActiveCard(null)}
               onClick={() => openTeam(team)}
@@ -169,11 +169,20 @@ function TeamCards() {
               <span className="card-suit" lang="en">LIKELION</span>
               <CardMark team={team} />
               <span className="mt-auto block">
-                <span className="block text-2xl font-black sm:text-3xl" lang="en">
+                <span
+                  className={`block text-2xl font-black sm:text-3xl ${
+                    ['team-1', 'team-4'].includes(team.id)
+                      ? 'desktop-card-title-compact'
+                      : ''
+                  } ${
+                    team.id === 'team-1' ? 'desktop-card-title-nowrap' : ''
+                  }`}
+                  lang="en"
+                >
                   {team.name}
                 </span>
                 <span className="mt-3 block text-sm font-bold leading-6">
-                  {team.tagline}
+                  {team.cardTagline ?? team.tagline}
                 </span>
               </span>
             </article>
